@@ -48,3 +48,12 @@ table {
 }
 
 
+body {
+    background-color: rgb(0, 15, 146);
+    color: white;
+}
+
+#jeopardyImage {
+    width: 11%;
+    height: 33%;
+}

@@ -1,11 +1,17 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <title>Jeopardy</title>
+        <link rel="stylesheet" href="{% static 'jeopardy/css/style.css' %}">
         {% block head %}
         {% endblock %}
     </head>
     <body>
+        <script type="module" src="{% static 'jeopardy/js/main.js' %}"></script>
+        <header>
+            <image id="jeopardyImage" src="{% static 'jeopardy/images/jeopardy_text.png' %}"></image>
+        </header>
         <p>do some stuff</p>
         {% block body %}
         {% endblock %}
