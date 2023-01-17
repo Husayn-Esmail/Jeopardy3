@@ -8,11 +8,16 @@
         {% endblock %}
     </head>
     <body>
+        <!-- load in javascript things -->
+        <script type="text/javascript">
+            // pass in data to js
+            var data = JSON.parse("{{data|escapejs}}");
+        </script>
         <script type="module" src="{% static 'jeopardy/js/main.js' %}"></script>
+        <!-- header stuff -->
         <header>
             <image id="jeopardyImage" src="{% static 'jeopardy/images/jeopardy_text.png' %}"></image>
         </header>
-        <p>do some stuff</p>
         {% block body %}
         {% endblock %}
         <footer>

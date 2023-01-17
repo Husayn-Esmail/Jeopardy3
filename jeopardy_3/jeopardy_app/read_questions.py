@@ -11,7 +11,7 @@ def extract_data_from_csv(csv_filename):
     # init empty dictionary
     cats_and_qs = {}
 
-    with open(filename, "r") as f:
+    with open(csv_filename, "r") as f:
         csvFile = csv.reader(f)
         for line in csvFile:
             category = line[0]
