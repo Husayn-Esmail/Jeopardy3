@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>Jeopardy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="{% static 'jeopardy/css/style.css' %}">
         {% block head %}
         {% endblock %}
@@ -16,7 +17,9 @@
         <script type="module" src="{% static 'jeopardy/js/main.js' %}"></script>
         <!-- header stuff -->
         <header>
-            <image id="jeopardyImage" src="{% static 'jeopardy/images/jeopardy_text.png' %}"></image>
+            <div id="jeopImCont">
+                <image id="jeopardyImage" src="{% static 'jeopardy/images/jeopardy_text.png' %}"></image>
+            </div>
         </header>
         {% block body %}
         {% endblock %}
