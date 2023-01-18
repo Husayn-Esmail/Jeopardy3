@@ -34,7 +34,7 @@ class Question {
     }
 
     get getVal() {
-        return this.val
+        return this.__val
     }
 
     set setVal(value) {
@@ -54,7 +54,6 @@ class Question {
         this.__used = !this.__used
         return this.__used
     }
-    
     
     reveal_question() {
         const p = document.createElement('p')
@@ -82,6 +81,11 @@ class Question {
 }
 
 let questions = [];
+// possible values are 0 and 1, if 0, then team 1, if 1, then team 2
+let point_state = 0;
+let team_points = {'team1': 0, 'team2': 0}
+
+// TODO eventually add questions to each category and what not (category object)
 
 for (var datum in data) {
     console.log(datum)
@@ -110,11 +114,11 @@ for (var datum in data) {
 
             // create a next button that'll go to the next question and add points
             // to the respective team
-            const splash_next = document.createElement('p')
-            splash_next.innerHTML = 'next'
-            splash_next.id = 'splash_next'
-            splash_next.style.display = 'none'
-            splash_next.addEventListener('click', () => {
+            const splash_correct = document.createElement('p')
+            splash_correct.innerHTML = 'correct'
+            splash_correct.id = 'splash_correct'
+            splash_correct.style.display = 'none'
+            splash_correct.addEventListener('click', () => {
                 // mark the question as used
                 q_element.flip_used()
                 console.log(q_element.getUsed)
@@ -126,9 +130,60 @@ for (var datum in data) {
                 remove_splash()
                 x.removeEventListener('click', xlistener) 
                 // add points to the team
+                if (point_state === 1) {
+                    team_points['team2'] += q_element.getVal
+                } else {
+                    team_points['team1'] += q_element.getVal
+                }
             });
-            splash.append(splash_next)
+            splash.append(splash_correct)
             
+            // if it's incorrect
+            const splash_incorrect = document.createElement('p')
+            splash_incorrect.innerHTML = 'incorrect'
+            splash_incorrect.id = 'splash_incorrect'
+            splash_incorrect.style.display = 'none'
+            splash_incorrect.addEventListener('click', () => {
+                // mark the question as used
+                q_element.flip_used()
+                console.log(q_element.getUsed)
+                // clear the value
+                x.innerHTML = ''
+                x.classList.add('nohover')
+                // ensure that the dimensions still stay the same
+                x.style.height = "100%"
+                remove_splash()
+                x.removeEventListener('click', xlistener) 
+                // don't add points to team
+            });
+            splash.append(splash_incorrect)
+            
+            // if it's steal
+            const splash_steal = document.createElement('p')
+            splash_steal.innerHTML = 'steal'
+            splash_steal.id = 'splash_steal'
+            // splash_steal.style.display = 'none'
+            splash_steal.addEventListener('click', () => {
+                // mark the question as used
+                q_element.flip_used()
+                console.log(q_element.getUsed)
+                // clear the value
+                x.innerHTML = ''
+                x.classList.add('nohover')
+                // ensure that the dimensions still stay the same
+                x.style.height = "100%"
+                remove_splash()
+                x.removeEventListener('click', xlistener) 
+                // add points to opposite team
+                if (point_state === 0) {
+                    team_points['team2'] += q_element.getVal
+                } else {
+                    team_points['team1'] += q_element.getVal
+                }
+            });
+            splash.append(splash_steal)
+            
+            console.log(team_points)
             // display answer button
             const splash_answer = document.createElement('p')
             splash_answer.innerHTML = 'answer'
@@ -136,9 +191,25 @@ for (var datum in data) {
             splash_answer.addEventListener('click', () => {
                 splash_p.innerHTML = q_element.getA
                 splash_answer.style.display = 'none'
-                splash_next.style.display = 'block'
+                splash_correct.style.display = 'block'
             });
             splash.append(splash_answer)
+
+            // team selector
+            const team1 = document.createElement('p')
+            const team2 = document.createElement('p')
+            team1.innerHTML = 'team1' // TODO change this so that it's not hardcoded
+            team2.innerHTML = 'team2' // TODO change this so that it's not hardcoded
+            team1.addEventListener('click', () => {
+                team1.style.border = '5px solid white'
+                point_state = 0
+            })
+            team2.addEventListener('click', () => {
+                point_state = 1
+            })
+            // team2.style.border = '5px solid white'
+            splash.append(team1)
+            splash.append(team2)
 
             // display a back button
             const splash_back = document.createElement('p')
@@ -149,7 +220,6 @@ for (var datum in data) {
 
             // add splash to the body
             document.getElementsByTagName('body')[0].append(splash)
-            
         });
         
         col_div.append(x)
@@ -165,6 +235,7 @@ function remove_splash()  {
     document.body.removeChild(splash)
 }
 
+// this doesn't work
 for (var q in questions) {
     if (questions[q].getUsed) {
         let x = questions[q].getEle
@@ -173,3 +244,15 @@ for (var q in questions) {
         console.log("i'm true")
     }
 }
+
+
+
+// things left to do:
+// TODO create setup page
+    // TODO make teams
+    // TODO allow teams to be renamed
+    // TODO add functionality to update scores of teams
+    // TODO add functionality to select which team gets points
+// TODO add timer
+// TODO add functionality to play music every time the timer starts.
+// TODO complete the jeopardy questions
