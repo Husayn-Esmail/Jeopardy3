@@ -12,13 +12,15 @@
         <!-- load in javascript things -->
         <script type="text/javascript">
             // pass in data to js
-            var data = JSON.parse("{{data|escapejs}}");
+            var data = JSON.parse("{{data|escapejs}}"); 
         </script>
         <script type="module" src="{% static 'jeopardy/js/main.js' %}"></script>
         <!-- header stuff -->
         <header>
             <div id="jeopImCont">
                 <image id="jeopardyImage" src="{% static 'jeopardy/images/jeopardy_text.png' %}"></image>
+                {% block header %}
+                {% endblock %}
             </div>
         </header>
         {% block body %}

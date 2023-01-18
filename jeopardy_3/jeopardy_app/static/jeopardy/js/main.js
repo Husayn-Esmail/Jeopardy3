@@ -256,3 +256,4 @@ for (var q in questions) {
 // TODO add timer
 // TODO add functionality to play music every time the timer starts.
 // TODO complete the jeopardy questions
+// TODO style the page to look much better
