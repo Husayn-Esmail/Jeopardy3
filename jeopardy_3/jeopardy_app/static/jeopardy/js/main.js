@@ -169,9 +169,9 @@ function create_game() {
                     remove_splash('splash')
                     // add points to the team
                     if (point_state === 1) {
-                        team_points['team2'] += q_element.getVal
+                        team_points[team_names[1]] += q_element.getVal
                     } else {
-                        team_points['team1'] += q_element.getVal
+                        team_points[team_names[0]] += q_element.getVal
                     }
                     update_scores()
                     determine_used()
@@ -204,9 +204,9 @@ function create_game() {
                     remove_splash('splash')
                     // add points to opposite team
                     if (point_state === 0) {
-                        team_points['team2'] += q_element.getVal
+                        team_points[team_names[0]] += q_element.getVal
                     } else {
-                        team_points['team1'] += q_element.getVal
+                        team_points[team_names[1]] += q_element.getVal
                     }
                     update_scores()
                     determine_used()
@@ -228,8 +228,8 @@ function create_game() {
                 // team selector
                 const team1 = document.createElement('p')
                 const team2 = document.createElement('p')
-                team1.innerHTML = 'team1' // TODO change this so that it's not hardcoded
-                team2.innerHTML = 'team2' // TODO change this so that it's not hardcoded
+                team1.innerHTML = team_names[0] // TODO change this so that it's not hardcoded
+                team2.innerHTML = team_names[1] // TODO change this so that it's not hardcoded
                 team1.addEventListener('click', () => {
                     team1.style.border = '5px solid white'
                     point_state = 0
