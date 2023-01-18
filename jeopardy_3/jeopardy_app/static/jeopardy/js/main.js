@@ -91,9 +91,68 @@ for (var datum in data) {
         const calc = (parseInt(dat) + 1) * 100
         const q_element = new Question(values[0], values[1], calc)
         var x = q_element.create_question_element()
-        x.addEventListener('click', function(){console.log(q_element.getQ)})
+        // add an event listener that will show the question when it is clicked
+        x.addEventListener('click', function(){
+            const splash = document.createElement('div')
+            splash.className = 'splash'
+
+            // create a next button that'll go to the next question and add points
+            // to the respective team
+            const splash_next = document.createElement('p')
+            splash_next.innerHTML = 'next'
+            splash_next.id = 'splash_next'
+            splash_next.style.display = 'none'
+            splash_next.addEventListener('click', () => {
+                // mark the question as used
+                q_element.flip_used()
+                console.log(q_element.getUsed)
+                remove_splash()
+                // add points to the team
+            });
+            splash.append(splash_next)
+            
+            // display the question
+            const splash_p = document.createElement('p')
+            splash_p.innerHTML= q_element.getQ
+            splash_p.className = 'splash_p'
+            splash.append(splash_p)
+
+            // display answer button
+            const splash_answer = document.createElement('p')
+            splash_answer.innerHTML = 'answer'
+            splash_answer.className = 'splash_answer'
+            splash_answer.addEventListener('click', () => {
+                splash_p.innerHTML = q_element.getA
+                splash_answer.style.display = 'none'
+                splash_next.style.display = 'block'
+            });
+            splash.append(splash_answer)
+
+            // display a back button
+            const splash_back = document.createElement('p')
+            splash_back.innerHTML = 'back'
+            splash_back.className = 'splash_back'
+            splash.append(splash_back)
+            splash_back.addEventListener('click', remove_splash)
+
+            // add splash to the body
+            document.getElementsByTagName('body')[0].append(splash)
+            
+        });
+        
         col_div.append(x)
     }
     document.getElementById('cats').append(p)
     document.getElementById('questions').append(col_div)
 }
+
+
+function remove_splash()  {
+    var splash = document.getElementsByClassName('splash')[0]
+    document.body.removeChild(splash)
+
+}
+
+
+// const questions = document.getElementsByClassName('question_button')
+// console.log(questions)
