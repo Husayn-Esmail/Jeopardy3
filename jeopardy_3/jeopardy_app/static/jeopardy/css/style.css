@@ -83,14 +83,19 @@ image {
 }
 
 
-.question_button{
+.question_button {
     color: yellow;
-    border: 2px solid black;
+    border: 5px solid black;
     font-size: 3rem;
     font-weight: bolder;
     font-family: 'Times New Roman', Times, serif;
     padding:1rem;
     text-align: center;
+}
+
+.question_button:hover {
+    background-color: yellow;
+    color: black;
 }
 
 .question_button:hover {
@@ -112,7 +117,7 @@ image {
 #cats {
     display: flex;
     justify-content: space-around;
-    margin: 0 4rem;
+    margin: 0 10rem;
 }
 
 #jeopardyImage {
@@ -128,7 +133,7 @@ image {
 
 #questions {
     display: flex;
-    padding: 0 4rem;
+    padding: 0 10rem;
 }
 
 #splash {

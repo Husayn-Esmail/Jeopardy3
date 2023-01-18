@@ -13,6 +13,7 @@ class Question {
         this.__val = val;
         this.__used = false;
         this.__element;
+        this.__double = false;
     }
 
     get getQ() {
@@ -48,6 +49,14 @@ class Question {
 
     get getEle() {
         return this.__element
+    }
+
+    get getDouble() {
+        return this.__element
+    }
+
+    set setDouble(value) {
+        return this.__double = value
     }
 
     flip_used() {
