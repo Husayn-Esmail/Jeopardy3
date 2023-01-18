@@ -254,12 +254,12 @@ for (var q in questions) {
 // TODO create setup page
     // TODO make teams
     // TODO allow teams to be renamed
-    // TODO add functionality to update scores of teams
     // TODO add functionality to select which team gets points
 // TODO add timer
 // TODO add functionality to play music every time the timer starts.
 // TODO complete the jeopardy questions
 // TODO style the page to look much better
+// TODO fix bug where only the last item disappears regardless of which point value is pressed. 
 
 function create_scores() {
     let names_div = document.getElementById('team_names')
