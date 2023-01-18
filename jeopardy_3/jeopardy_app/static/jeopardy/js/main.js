@@ -68,14 +68,13 @@ class Question {
     }
 
     create_question_element() {
-        var object = document.createElement('a')
+        var object = document.createElement('p')
         object.className = "question_button"
         object.innerHTML = '$' + this.__val // fix this in later iterations because this is bad. 
         return object
     }
 
 }
-
 
 for (var datum in data) {
     console.log(datum)
@@ -96,6 +95,12 @@ for (var datum in data) {
             const splash = document.createElement('div')
             splash.className = 'splash'
 
+            // display the question
+            const splash_p = document.createElement('p')
+            splash_p.innerHTML= q_element.getQ
+            splash_p.className = 'splash_p'
+            splash.append(splash_p)
+
             // create a next button that'll go to the next question and add points
             // to the respective team
             const splash_next = document.createElement('p')
@@ -111,12 +116,6 @@ for (var datum in data) {
             });
             splash.append(splash_next)
             
-            // display the question
-            const splash_p = document.createElement('p')
-            splash_p.innerHTML= q_element.getQ
-            splash_p.className = 'splash_p'
-            splash.append(splash_p)
-
             // display answer button
             const splash_answer = document.createElement('p')
             splash_answer.innerHTML = 'answer'
@@ -154,5 +153,5 @@ function remove_splash()  {
 }
 
 
-// const questions = document.getElementsByClassName('question_button')
-// console.log(questions)
+const questions = document.getElementsByClassName('question_button')
+console.log(questions)
