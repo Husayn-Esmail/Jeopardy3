@@ -71,7 +71,6 @@ class Question {
         var object = document.createElement('a')
         object.className = "question_button"
         object.innerHTML = '$' + this.__val // fix this in later iterations because this is bad. 
-        object.addEventListener('mouseup', this.reveal_question)
         return object
     }
 
@@ -92,6 +91,7 @@ for (var datum in data) {
         const calc = (parseInt(dat) + 1) * 100
         const q_element = new Question(values[0], values[1], calc)
         var x = q_element.create_question_element()
+        x.addEventListener('click', function(){console.log(q_element.getQ)})
         col_div.append(x)
     }
     document.getElementById('cats').append(p)
