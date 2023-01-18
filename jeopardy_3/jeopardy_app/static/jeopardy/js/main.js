@@ -7,13 +7,14 @@ class Category {
 }
 
 class Question {
-    constructor(q, a, val) {
+    constructor(q, a, val, id) {
         this.__q = q;
         this.__a = a;
         this.__val = val;
         this.__used = false;
         this.__element;
         this.__double = false;
+        this.__id = id
     }
 
     get getQ() {
@@ -57,6 +58,14 @@ class Question {
 
     set setDouble(value) {
         return this.__double = value
+    }
+
+    get getId() {
+        return this.__id
+    }
+
+    set setId(value) {
+        return this.__id = value
     }
 
     flip_used() {
@@ -262,9 +271,9 @@ for (var q in questions) {
 
 function setup() {
     // setup container
-    const encasuplating_div = document.createElement('div')
-    encasuplating_div.classList = ['setup_container']
-    encasuplating_div.id = 'setup_container'
+    const encapsulating_div = document.createElement('div')
+    encapsulating_div.classList = ['setup_container']
+    encapsulating_div.id = 'setup_container'
     // create header
     const header = document.createElement('h1')
     header.id = 'setup_header'
@@ -292,16 +301,16 @@ function setup() {
     done_button.innerHTML = 'done'
     done_button.id = 'done'
     done_button.addEventListener('click', () => {
-        remove_splash('done')
+        remove_splash('setup_container')
     })
     
     // add elements to encapsulating div
-    encasuplating_div.append(header)
-    encasuplating_div.append(timer_length_label, timer_length_field)
-    encasuplating_div.append(team_one_label, team_one_name, team_two_label, team_two_name)
+    encapsulating_div.append(header)
+    encapsulating_div.append(timer_length_label, timer_length_field)
+    encapsulating_div.append(team_one_label, team_one_name, team_two_label, team_two_name)
     encapsulating_div.append(done_button)
     // add to main body
-    return encasuplating_div
+    return encapsulating_div
 }
 
 
@@ -340,7 +349,7 @@ function update_scores() {
 }
 
 function remove_splash(element_id)  {
-    const splash = document.getElementById('splash')
+    const splash = document.getElementById(element_id)
     document.body.removeChild(splash)
 }
 
