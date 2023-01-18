@@ -135,6 +135,7 @@ for (var datum in data) {
                 } else {
                     team_points['team1'] += q_element.getVal
                 }
+                update_scores()
             });
             splash.append(splash_correct)
             
@@ -155,6 +156,7 @@ for (var datum in data) {
                 remove_splash()
                 x.removeEventListener('click', xlistener) 
                 // don't add points to team
+                update_scores()  // TODO might need to take this out
             });
             splash.append(splash_incorrect)
             
@@ -180,6 +182,7 @@ for (var datum in data) {
                 } else {
                     team_points['team1'] += q_element.getVal
                 }
+                update_scores()
             });
             splash.append(splash_steal)
             
@@ -257,3 +260,28 @@ for (var q in questions) {
 // TODO add functionality to play music every time the timer starts.
 // TODO complete the jeopardy questions
 // TODO style the page to look much better
+
+function create_scores() {
+    let names_div = document.getElementById('team_names')
+    let team_one_name = 'team one'
+    let team_two_name = 'team two'
+    let one_h2 = document.createElement('h2')
+    let two_h2 = document.createElement('h2')
+
+    one_h2.innerHTML = team_one_name + ":" + team_points["team1"]
+    two_h2.innerHTML = team_two_name + ":" + team_points["team2"]
+    one_h2.id = 'one'
+    two_h2.id = 'two'
+    names_div.append(one_h2)
+    names_div.append(two_h2)
+}
+function update_scores() {
+    let team_one_name = 'team one'
+    let team_two_name = 'team two'
+    let one_h2 = document.getElementById('one')
+    let two_h2 = document.getElementById('two')
+    one_h2.innerHTML = team_one_name + ":" + team_points["team1"]
+    two_h2.innerHTML = team_two_name + ":" + team_points["team2"]
+}
+
+create_scores()
