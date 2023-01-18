@@ -381,8 +381,23 @@ setup_button.addEventListener('click', () => {
 topbar_container.append(setup_button)
 
 function countdownTimer(seconds) {
+    var start = Date.now();
+    let int = setInterval(function() {
+        var delta = Date.now() - start; // milliseconds elapsed since start
+        // TODO use second to display the countdown
+        const second = Math.floor(delta / 1000); // in seconds
+        // alternatively just show wall clock time:
+        const d = new Date().toUTCString()
+        // stops the interval at a given time
+        if (second === seconds) {
+            clearInterval(int) 
+            console.log(second)
+        }
+    }, 1000)
     console.log('counting down')
 }
+
+countdownTimer(3)
 
 function determine_used() {
     for (let q in questions) {
@@ -396,7 +411,7 @@ function determine_used() {
 function disable_used(q_id) {
     console.log(`${q_id}q`)
     const question = document.getElementById(q_id+'q')
-    console.log(question)
+    // blank the value and ensure it maintains it's form
     question.innerHTML = ''
     question.className = 'nohover'
     question.style.height = "100%"
