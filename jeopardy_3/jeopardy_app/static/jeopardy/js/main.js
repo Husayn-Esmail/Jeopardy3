@@ -398,12 +398,11 @@ function disable_used(q_id) {
     const question = document.getElementById(q_id+'q')
     console.log(question)
     question.innerHTML = ''
-    // question.removeEventListener('click', xlistener)
     question.className = 'nohover'
     question.style.height = "100%"
-    question.removeEventListener('click', xlistener)
-    console.log(question.classList)
-    console.log('i run')
+    // create a clone and replace question with it's clone to remove event listener
+    const clone = question.cloneNode(true)
+    question.replaceWith(clone)
 }
 
 
