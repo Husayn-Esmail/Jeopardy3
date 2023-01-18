@@ -262,6 +262,7 @@ function create_game() {
     }
 }
 
+
 // setup splash screen
 function setup() {
     // setup container
@@ -365,15 +366,6 @@ function remove_splash(element_id)  {
     document.body.removeChild(splash)
 }
 
-// stupid way to make a button
-const topbar_container = document.getElementById("jeopImCont")
-const setup_button = document.createElement('p')
-setup_button.innerHTML = 'setup'
-setup_button.id = 'setup_button'
-setup_button.addEventListener('click', () => {
-    document.getElementsByTagName('body')[0].append(setup())
-})
-topbar_container.append(setup_button)
 
 function countdownTimer(seconds) {
     var start = Date.now();
@@ -412,6 +404,20 @@ function disable_used(q_id) {
     const clone = question.cloneNode(true)
     question.replaceWith(clone)
 }
+function create_setup_button() {
+// stupid way to make a button
+    const topbar_container = document.getElementById("jeopImCont");
+    const setup_button = document.createElement('p');
+    setup_button.innerHTML = 'setup';
+    setup_button.id = 'setup_button';
+    setup_button.addEventListener('click', () => {
+        document.getElementsByTagName('body')[0].append(setup());
+    });
+    topbar_container.append(setup_button);
+}
 
+create_game()
+create_setup_button();
 init_scores()
 create_scores()
+
