@@ -70,7 +70,7 @@ class Question {
     create_question_element() {
         var object = document.createElement('a')
         object.className = "question_button"
-        object.innerHTML = this.__val
+        object.innerHTML = '$' + this.__val // fix this in later iterations because this is bad. 
         object.addEventListener('mouseup', this.reveal_question)
         return object
     }
