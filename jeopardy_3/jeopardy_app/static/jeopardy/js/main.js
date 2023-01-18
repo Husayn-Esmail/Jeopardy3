@@ -92,6 +92,7 @@ class Question {
         var object = document.createElement('p')
         object.className = "question_button"
         object.innerHTML = '$' + this.__val // fix this in later iterations because this is bad. 
+        object.id = this.__id +'q'
         this.__element = object
         return object
     }
@@ -108,6 +109,7 @@ let team_points = {'team1': 0, 'team2': 0}
 
 
 // splash screen for questions and answers
+let cat_counter = 10
 for (var datum in data) {
     console.log(datum)
     let p = document.createElement('p')
@@ -116,17 +118,21 @@ for (var datum in data) {
     var extract = data[datum]
     let col_div = document.createElement('div')
     col_div.className = "col"
+    let id_counter = 0
+    id_counter += cat_counter;
+    cat_counter += 10
     for (var dat in data[datum]) {
         var values = extract[dat]
         // unwrap values
         const calc = (parseInt(dat) + 1) * 100
-        const q_element = new Question(values[0], values[1], calc)
+        const q_element = new Question(values[0], values[1], calc, id_counter)
+        id_counter++;
         var x = q_element.create_question_element()
+        console.log(x.id)
         // add an event listener that will show the question when it is clicked
         x.addEventListener('click', function xlistener(){
             const splash = document.createElement('div')
             splash.id = 'splash'
-
             // display the question
             const splash_p = document.createElement('p')
             splash_p.innerHTML= q_element.getQ
@@ -259,16 +265,21 @@ for (var datum in data) {
 
 
 // this doesn't work
-for (var q in questions) {
-    if (questions[q].getUsed) {
-        let x = questions[q].getEle
-        x.removeEventListener('click', xlistener)
-        x.classList.add('nohover')
-        console.log("i'm true")
-    }
-}
+// for hiding the values after the question has been picked
+// need to use ids and select that id then deal with it.
+// for (var q in questions) {
+//     if (questions[q].getUsed) {
+//         console.log(questions[q].getUsed)
+//         let x = questions[q].getEle
+//         x.removeEventListener('click', xlistener)
+//         x.classList.add('nohover')
+//         console.log("i'm true")
+//     }
+// }
 
 
+
+// setup splash screen
 function setup() {
     // setup container
     const encapsulating_div = document.createElement('div')
@@ -355,12 +366,26 @@ function remove_splash(element_id)  {
 
 // stupid way to make a button
 const topbar_container = document.getElementById("jeopImCont")
-topbar_container.addEventListener('click', () => {
+const setup_button = document.createElement('p')
+setup_button.innerHTML = 'setup'
+setup_button.id = 'setup_button'
+setup_button.addEventListener('click', () => {
     document.getElementsByTagName('body')[0].append(setup())
 })
+topbar_container.append(setup_button)
 
 function countdownTimer(seconds) {
+    console.log('counting down')
+}
 
+function determine_used() {
+}
+
+function disable_used(q_id) {
+    const question = document.getElementById(q_id)
+    question.removeEventListener('click', xlistener)
+    question.classList.add('nohover')
+    console.log('i run')
 }
 
 create_scores()

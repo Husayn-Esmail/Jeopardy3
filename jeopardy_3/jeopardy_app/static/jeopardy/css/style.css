@@ -156,12 +156,12 @@ image {
     text-align: center;
 }
 
-#splash_back, #splash_next, #splash_answer {
+#splash_back, #splash_next, #splash_answer, #setup_button, #done {
     font-size: 2rem;
     border: 1px solid white;
 }
 
-#splash_back:hover, #splash_next:hover, #splash_answer:hover {
+#splash_back:hover, #splash_next:hover, #splash_answer:hover, #setup_button:hover, #done:hover {
     cursor: pointer;
     background-color: grey;
 }
@@ -175,3 +175,5 @@ image {
     position: absolute;
     top: 0;
 }
+
+
