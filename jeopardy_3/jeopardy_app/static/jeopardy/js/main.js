@@ -93,12 +93,12 @@ for (var datum in data) {
         // add an event listener that will show the question when it is clicked
         x.addEventListener('click', function(){
             const splash = document.createElement('div')
-            splash.className = 'splash'
+            splash.id = 'splash'
 
             // display the question
             const splash_p = document.createElement('p')
             splash_p.innerHTML= q_element.getQ
-            splash_p.className = 'splash_p'
+            splash_p.id = 'splash_p'
             splash.append(splash_p)
 
             // create a next button that'll go to the next question and add points
@@ -119,7 +119,7 @@ for (var datum in data) {
             // display answer button
             const splash_answer = document.createElement('p')
             splash_answer.innerHTML = 'answer'
-            splash_answer.className = 'splash_answer'
+            splash_answer.id = 'splash_answer'
             splash_answer.addEventListener('click', () => {
                 splash_p.innerHTML = q_element.getA
                 splash_answer.style.display = 'none'
@@ -130,7 +130,7 @@ for (var datum in data) {
             // display a back button
             const splash_back = document.createElement('p')
             splash_back.innerHTML = 'back'
-            splash_back.className = 'splash_back'
+            splash_back.id = 'splash_back'
             splash.append(splash_back)
             splash_back.addEventListener('click', remove_splash)
 
@@ -147,7 +147,7 @@ for (var datum in data) {
 
 
 function remove_splash()  {
-    var splash = document.getElementsByClassName('splash')[0]
+    var splash = document.getElementById('splash')
     document.body.removeChild(splash)
 
 }
