@@ -111,20 +111,23 @@ let team_points = {'team1': 0, 'team2': 0}
 // splash screen for questions and answers
 let cat_counter = 10
 for (var datum in data) {
-    console.log(datum)
+    // create categories
     let p = document.createElement('p')
     p.innerHTML = datum
     p.className = 'category'
+    // get list of questions
     var extract = data[datum]
     let col_div = document.createElement('div')
     col_div.className = "col"
+    // create counter for individual questions
     let id_counter = 0
     id_counter += cat_counter;
     cat_counter += 10
+    // create each individual question
     for (var dat in data[datum]) {
         var values = extract[dat]
         // unwrap values
-        const calc = (parseInt(dat) + 1) * 100
+        const calc = (parseInt(dat) + 1) * 100 // calculation for points value
         const q_element = new Question(values[0], values[1], calc, id_counter)
         id_counter++;
         var x = q_element.create_question_element()
@@ -150,8 +153,8 @@ for (var datum in data) {
                 q_element.flip_used()
                 console.log(q_element.getUsed)
                 // clear the value
-                x.innerHTML = ''
-                x.classList.add('nohover')
+                // x.innerHTML = ''
+                // x.classList.add('nohover')
                 // ensure that the dimensions still stay the same
                 x.style.height = "100%"
                 remove_splash('splash')
@@ -163,6 +166,7 @@ for (var datum in data) {
                     team_points['team1'] += q_element.getVal
                 }
                 update_scores()
+                determine_used()
             });
             splash.append(splash_correct)
             
@@ -184,6 +188,7 @@ for (var datum in data) {
                 x.removeEventListener('click', xlistener) 
                 // don't add points to team
                 update_scores()  // TODO might need to take this out
+                determine_used()
             });
             splash.append(splash_incorrect)
             
@@ -210,6 +215,7 @@ for (var datum in data) {
                     team_points['team1'] += q_element.getVal
                 }
                 update_scores()
+                determine_used()
             });
             splash.append(splash_steal)
             
@@ -379,13 +385,26 @@ function countdownTimer(seconds) {
 }
 
 function determine_used() {
+    for (let q in questions) {
+        if (questions[q].getUsed) {
+            disable_used(questions[q].getId)
+        }
+    }
+    console.log(questions)
 }
 
 function disable_used(q_id) {
-    const question = document.getElementById(q_id)
+    console.log(`${q_id}q`)
+    const question = document.getElementById(q_id+'q')
+    console.log(question)
+    question.innerHTML = ''
+    // question.removeEventListener('click', xlistener)
+    question.className = 'nohover'
+    question.style.height = "100%"
     question.removeEventListener('click', xlistener)
-    question.classList.add('nohover')
+    console.log(question.classList)
     console.log('i run')
 }
+
 
 create_scores()
