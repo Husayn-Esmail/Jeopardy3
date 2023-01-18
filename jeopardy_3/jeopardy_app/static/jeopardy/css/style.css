@@ -103,6 +103,9 @@ image {
     width: 100%;
 }
 
+.nohover, .nohover:hover {
+    cursor: default;
+}
 
 
 /* IDS */
@@ -151,3 +154,5 @@ image {
     cursor: pointer;
     background-color: grey;
 }
+
+

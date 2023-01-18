@@ -12,6 +12,7 @@ class Question {
         this.__a = a;
         this.__val = val;
         this.__used = false;
+        this.__element;
     }
 
     get getQ() {
@@ -45,11 +46,14 @@ class Question {
         return this.__used
     }
 
+    get getEle() {
+        return this.__element
+    }
+
     flip_used() {
         this.__used = !this.__used
         return this.__used
     }
-
     
     
     reveal_question() {
@@ -71,10 +75,13 @@ class Question {
         var object = document.createElement('p')
         object.className = "question_button"
         object.innerHTML = '$' + this.__val // fix this in later iterations because this is bad. 
+        this.__element = object
         return object
     }
 
 }
+
+let questions = [];
 
 for (var datum in data) {
     console.log(datum)
@@ -91,7 +98,7 @@ for (var datum in data) {
         const q_element = new Question(values[0], values[1], calc)
         var x = q_element.create_question_element()
         // add an event listener that will show the question when it is clicked
-        x.addEventListener('click', function(){
+        x.addEventListener('click', function xlistener(){
             const splash = document.createElement('div')
             splash.id = 'splash'
 
@@ -111,7 +118,13 @@ for (var datum in data) {
                 // mark the question as used
                 q_element.flip_used()
                 console.log(q_element.getUsed)
+                // clear the value
+                x.innerHTML = ''
+                x.classList.add('nohover')
+                // ensure that the dimensions still stay the same
+                x.style.height = "100%"
                 remove_splash()
+                x.removeEventListener('click', xlistener) 
                 // add points to the team
             });
             splash.append(splash_next)
@@ -140,6 +153,7 @@ for (var datum in data) {
         });
         
         col_div.append(x)
+        questions.push(q_element)
     }
     document.getElementById('cats').append(p)
     document.getElementById('questions').append(col_div)
@@ -149,9 +163,13 @@ for (var datum in data) {
 function remove_splash()  {
     var splash = document.getElementById('splash')
     document.body.removeChild(splash)
-
 }
 
-
-const questions = document.getElementsByClassName('question_button')
-console.log(questions)
+for (var q in questions) {
+    if (questions[q].getUsed) {
+        let x = questions[q].getEle
+        x.removeEventListener('click', xlistener)
+        x.classList.add('nohover')
+        console.log("i'm true")
+    }
+}
