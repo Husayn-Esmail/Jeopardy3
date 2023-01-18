@@ -96,6 +96,9 @@ let team_points = {'team1': 0, 'team2': 0}
 
 // TODO eventually add questions to each category and what not (category object)
 
+
+
+// splash screen for questions and answers
 for (var datum in data) {
     console.log(datum)
     let p = document.createElement('p')
@@ -136,7 +139,7 @@ for (var datum in data) {
                 x.classList.add('nohover')
                 // ensure that the dimensions still stay the same
                 x.style.height = "100%"
-                remove_splash()
+                remove_splash('splash')
                 x.removeEventListener('click', xlistener) 
                 // add points to the team
                 if (point_state === 1) {
@@ -162,7 +165,7 @@ for (var datum in data) {
                 x.classList.add('nohover')
                 // ensure that the dimensions still stay the same
                 x.style.height = "100%"
-                remove_splash()
+                remove_splash('splash')
                 x.removeEventListener('click', xlistener) 
                 // don't add points to team
                 update_scores()  // TODO might need to take this out
@@ -183,7 +186,7 @@ for (var datum in data) {
                 x.classList.add('nohover')
                 // ensure that the dimensions still stay the same
                 x.style.height = "100%"
-                remove_splash()
+                remove_splash('splash')
                 x.removeEventListener('click', xlistener) 
                 // add points to opposite team
                 if (point_state === 0) {
@@ -228,7 +231,9 @@ for (var datum in data) {
             splash_back.innerHTML = 'back'
             splash_back.id = 'splash_back'
             splash.append(splash_back)
-            splash_back.addEventListener('click', remove_splash)
+            splash_back.addEventListener('click', () => {
+                remove_splash('splash')
+            })
 
             // add splash to the body
             document.getElementsByTagName('body')[0].append(splash)
@@ -242,10 +247,7 @@ for (var datum in data) {
 }
 
 
-function remove_splash()  {
-    var splash = document.getElementById('splash')
-    document.body.removeChild(splash)
-}
+
 
 // this doesn't work
 for (var q in questions) {
@@ -257,6 +259,50 @@ for (var q in questions) {
     }
 }
 
+
+function setup() {
+    // setup container
+    const encasuplating_div = document.createElement('div')
+    encasuplating_div.classList = ['setup_container']
+    encasuplating_div.id = 'setup_container'
+    // create header
+    const header = document.createElement('h1')
+    header.id = 'setup_header'
+    header.innerHTML = 'Setup'
+    // create timer config
+    const timer_length_label = document.createElement('p')
+    const timer_length_field = document.createElement('input')
+    timer_length_label.classList = ['setup_label']
+    timer_length_field.classList = ['setup_input']
+    timer_length_label.innerText = "Enter timer length in seconds:"
+    // create team config
+    const team_one_label = document.createElement('p')
+    const team_one_name = document.createElement('input')
+    const team_two_label = document.createElement('p')
+    const team_two_name = document.createElement('input')
+    team_one_label.classList = ['setup_label']
+    team_two_label.classList = ['setup_label']
+    team_one_name.classList = ['setup_input']
+    team_two_name.classList = ['setup_input']
+    team_one_label.innerText = "Enter Team 1 Name: "
+    team_two_label.innerText = "Enter Team 2 Name: "
+
+    // create way to return to game screen
+    const done_button = document.createElement('p')
+    done_button.innerHTML = 'done'
+    done_button.id = 'done'
+    done_button.addEventListener('click', () => {
+        remove_splash('done')
+    })
+    
+    // add elements to encapsulating div
+    encasuplating_div.append(header)
+    encasuplating_div.append(timer_length_label, timer_length_field)
+    encasuplating_div.append(team_one_label, team_one_name, team_two_label, team_two_name)
+    encapsulating_div.append(done_button)
+    // add to main body
+    return encasuplating_div
+}
 
 
 // things left to do:
@@ -291,6 +337,21 @@ function update_scores() {
     let two_h2 = document.getElementById('two')
     one_h2.innerHTML = team_one_name + ":" + team_points["team1"]
     two_h2.innerHTML = team_two_name + ":" + team_points["team2"]
+}
+
+function remove_splash(element_id)  {
+    const splash = document.getElementById('splash')
+    document.body.removeChild(splash)
+}
+
+// stupid way to make a button
+const topbar_container = document.getElementById("jeopImCont")
+topbar_container.addEventListener('click', () => {
+    document.getElementsByTagName('body')[0].append(setup())
+})
+
+function countdownTimer(seconds) {
+
 }
 
 create_scores()
