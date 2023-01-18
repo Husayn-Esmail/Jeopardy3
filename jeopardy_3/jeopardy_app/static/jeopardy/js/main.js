@@ -118,7 +118,7 @@ function init_scores() {
     }
 }
 
-// TODO eventually add questions to each category and what not (category object)
+
 
 
 
@@ -327,15 +327,12 @@ function setup() {
 
 
 // things left to do:
-// TODO create setup page (connect fields to actual data)
-    // TODO make teams
-    // TODO allow teams to be renamed
-    // TODO add functionality to select which team gets points
+// TODO add functionality to select which team gets points
 // TODO add timer
 // TODO add functionality to play music every time the timer starts.
 // TODO complete the jeopardy questions
 // TODO style the page to look much better
-// TODO fix bug where only the last item disappears regardless of which point value is pressed. 
+// TODO use second to display the countdown
 
 function create_scores() {
     let names_div = document.getElementById('team_names')
@@ -371,7 +368,6 @@ function countdownTimer(seconds) {
     var start = Date.now();
     let int = setInterval(function() {
         var delta = Date.now() - start; // milliseconds elapsed since start
-        // TODO use second to display the countdown
         const second = Math.floor(delta / 1000); // in seconds
         // alternatively just show wall clock time:
         const d = new Date().toUTCString()
@@ -416,8 +412,16 @@ function create_setup_button() {
     topbar_container.append(setup_button);
 }
 
+
 create_game()
 create_setup_button();
 init_scores()
 create_scores()
 
+const categories = document.getElementsByClassName('category')
+categories[0].classList.add("top_left")
+categories[4].classList.add('top_right')
+const bottom_left = document.getElementById('14q')
+bottom_left.classList.add('bottom_left')
+const bottom_right = document.getElementById('54q')
+bottom_right.classList.add('bottom_right')
