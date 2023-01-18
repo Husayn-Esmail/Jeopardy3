@@ -277,6 +277,8 @@ function setup() {
 
     // create timer config
     const timer_length_label = document.createElement('p')
+    const timer_field_container = document.createElement('div')
+    timer_field_container.className = 'input_container'
     const timer_length_field = document.createElement('input')
     timer_length_label.innerText = "Enter timer length in seconds:"
     timer_length_label.classList = ['setup_label']
@@ -285,6 +287,10 @@ function setup() {
     // create team config
     const team_one_label = document.createElement('p')
     const team_one_name = document.createElement('input')
+    const team_one_container = document.createElement('div')
+    const team_two_container = document.createElement('div')
+    team_one_container.className = 'input_container'
+    team_two_container.className = 'input_container'
     const team_two_label = document.createElement('p')
     const team_two_name = document.createElement('input')
     team_one_label.classList = ['setup_label']
@@ -297,6 +303,8 @@ function setup() {
     warning.innerText = 'WARNING! CHANGING ANYTHING ON THIS PAGE WILL RESET YOUR POINTS' 
 
     // create way to return to game screen
+    const done_container = document.createElement('div')
+    done_container.id = 'done_container'
     const done_button = document.createElement('p')
     done_button.innerHTML = 'done'
     done_button.id = 'done'
@@ -318,9 +326,13 @@ function setup() {
     // add elements to encapsulating div
     encapsulating_div.append(header)
     encapsulating_div.append(warning)
-    encapsulating_div.append(timer_length_label, timer_length_field)
-    encapsulating_div.append(team_one_label, team_one_name, team_two_label, team_two_name)
-    encapsulating_div.append(done_button)
+    timer_field_container.append(timer_length_field)
+    encapsulating_div.append(timer_length_label, timer_field_container)
+    team_one_container.append(team_one_name)
+    team_two_container.append(team_two_name)
+    encapsulating_div.append(team_one_label, team_one_container, team_two_label, team_two_container)
+    done_container.append(done_button)
+    encapsulating_div.append(done_container)
     // add to main body
     return encapsulating_div
 }
@@ -341,8 +353,8 @@ function create_scores() {
     let one_h2 = document.createElement('h2')
     let two_h2 = document.createElement('h2')
 
-    one_h2.innerHTML = team_one_name + ":" + team_points[team_one_name]
-    two_h2.innerHTML = team_two_name + ":" + team_points[team_two_name]
+    one_h2.innerHTML = team_one_name + ": " + team_points[team_one_name]
+    two_h2.innerHTML = team_two_name + ": " + team_points[team_two_name]
     one_h2.id = 'one'
     two_h2.id = 'two'
     names_div.append(one_h2)
@@ -400,16 +412,17 @@ function disable_used(q_id) {
     const clone = question.cloneNode(true)
     question.replaceWith(clone)
 }
+
 function create_setup_button() {
 // stupid way to make a button
-    const topbar_container = document.getElementById("jeopImCont");
+    const target = document.getElementById('jeopardyImage')
     const setup_button = document.createElement('p');
     setup_button.innerHTML = 'setup';
     setup_button.id = 'setup_button';
     setup_button.addEventListener('click', () => {
         document.getElementsByTagName('body')[0].append(setup());
     });
-    topbar_container.append(setup_button);
+    target.parentNode.insertBefore(setup_button, target)
 }
 
 

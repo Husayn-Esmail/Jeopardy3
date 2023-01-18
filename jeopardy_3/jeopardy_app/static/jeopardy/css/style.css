@@ -129,6 +129,18 @@ image {
 }
 
 
+/* setup fields */
+.input_container {
+    display: flex;
+    justify-content: center;
+}
+
+.setup_input {
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
 /* IDS */
 #cats {
     display: flex;
@@ -139,11 +151,12 @@ image {
 #jeopardyImage {
     width: 11%;
     height: 33%;
+    padding: 0 1rem;
 }
 
 #jeopImCont {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding: 1rem 0;
 }
 
@@ -172,12 +185,12 @@ image {
     text-align: center;
 }
 
-#splash_back, #splash_next, #splash_answer, #done {
+#splash_back, #splash_next, #splash_answer {
     font-size: 2rem;
     border: 1px solid white;
 }
 
-#splash_back:hover, #splash_next:hover, #done:hover {
+#splash_back:hover, #splash_next:hover {
     cursor: pointer;
     background-color: grey;
 }
@@ -192,22 +205,51 @@ image {
     top: 0;
 }
 
+#setup_container p {
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
 #setup_button {
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    border-radius: 0.1rem;
+    border-radius: 1rem;
     border: solid black 2px;
     background-color: white;
     color: black;
     text-align: center;
     height: 100%;
     padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
 }
 
-#setup_button:hover {
+#setup_button:hover, #done:hover {
     background-color: grey;
     color: white;
     cursor: pointer;
+}
+
+#done {
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 0.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: solid black 2px;
+    border-radius: 1rem;
+    width: fit-content;
+}
+
+#done_container {
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -215,5 +257,15 @@ image {
     text-align: center;
     font-size: 3rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 4rem;
 }
 
+
+
+/* TEAM HEADERS */
+#one, #two {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.2rem;
+}
