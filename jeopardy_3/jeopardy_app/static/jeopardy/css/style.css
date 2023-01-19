@@ -141,6 +141,10 @@ image {
     margin: 1rem;
 }
 
+.right_wrong {
+    size: 20%;
+}
+
 /* IDS */
 #cats {
     display: flex;
@@ -195,6 +199,40 @@ image {
     background-color: grey;
 }
 
+#splash_correct, #steal_correct {
+    background-color: green;
+    color: white;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: solid white 3px;
+    padding: 1rem;
+}
+
+#splash_correct:hover, #steal_correct:hover {
+    background-color: white;
+    color: green;
+    cursor: pointer;
+}
+
+#splash_steal, #steal_incorrect {
+    background-color: red;
+    color: white;
+    border-radius: 1rem;
+    font-size: 2rem;
+    border: solid white 3px;
+    padding: 1rem;
+}
+
+#splash_steal:hover, #steal_incorrect:hover {
+    background-color: white;
+    color: red;
+    cursor: pointer
+}
+
+
+
+
+
 /* setup splash screen */
 #setup_container {
     background-color: rgb(0, 15, 146);
@@ -227,13 +265,13 @@ image {
     font-size: 1.5rem;
 }
 
-#setup_button:hover, #done:hover {
+#setup_button:hover, #done:hover, .next:hover {
     background-color: grey;
     color: white;
     cursor: pointer;
 }
 
-#done {
+#done, .next {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;

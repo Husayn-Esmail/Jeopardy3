@@ -1,3 +1,6 @@
+// **************
+// CLASSES
+// **************
 class Category {
     constructor(name) {
         this.name = name
@@ -84,7 +87,6 @@ class Question {
         const p = document.createElement('p')
         p.className = 'answer'
         p.innerHTML = this.__a
-        console.log(this.__a)
         return p
     }
 
@@ -96,8 +98,11 @@ class Question {
         this.__element = object
         return object
     }
-
 }
+
+// ******************
+// Global Variables
+// ******************
 
 let questions = [];
 // possible values are 0 and 1, if 0, then team 1, if 1, then team 2
@@ -119,142 +124,225 @@ function init_scores() {
 }
 
 
-
-
-
 // splash screen for questions and answers
-let cat_counter = 10
 function create_game() {
-    for (var datum in data) {
+    let cat_counter = 10
+    for (var category in data) {
         // create categories
         let p = document.createElement('p')
-        p.innerHTML = datum
+        p.innerHTML = category
         p.className = 'category'
+
         // get list of questions
-        var extract = data[datum]
+        var extract = data[category]
         let col_div = document.createElement('div')
         col_div.className = "col"
+
         // create counter for individual questions
         let id_counter = 0
         id_counter += cat_counter;
         cat_counter += 10
+
         // create each individual question
-        for (var dat in data[datum]) {
-            var values = extract[dat]
+        for (var question_answer_pair in data[category]) {
+            var values = extract[question_answer_pair]
+
             // unwrap values
-            const calc = (parseInt(dat) + 1) * 100 // calculation for points value
+            const calc = (parseInt(question_answer_pair) + 1) * 100 // calculation for points value
+            
+            // create question instances
             const q_element = new Question(values[0], values[1], calc, id_counter)
+            // increment id counter immediately so it's not forgotten later
             id_counter++;
-            var x = q_element.create_question_element()
-            console.log(x.id)
+
+            var html_question = q_element.create_question_element()
             // add an event listener that will show the question when it is clicked
-            x.addEventListener('click', function xlistener(){
+            html_question.addEventListener('click', function html_q_listener(){
                 const splash = document.createElement('div')
                 splash.id = 'splash'
+
                 // display the question
                 const splash_p = document.createElement('p')
                 splash_p.innerHTML= q_element.getQ
                 splash_p.id = 'splash_p'
                 splash.append(splash_p)
-
-                // create a next button that'll go to the next question and add points
-                // to the respective team
+                
+                // display correct
                 const splash_correct = document.createElement('p')
-                splash_correct.innerHTML = 'correct'
+                splash_correct.innerHTML = 'CORRECT'
                 splash_correct.id = 'splash_correct'
-                splash_correct.style.display = 'none'
+
+                // display incorrect (steal)
+                const splash_steal = document.createElement('p')
+                splash_steal.innerHTML = 'STEAL'
+                splash_steal.id = 'splash_steal'
+
+                 // create button for steal_correct
+                 const steal_correct = document.createElement('p')
+                 steal_correct.id = 'steal_correct'
+                 steal_correct.innerHTML = 'CORRECT'
+                 steal_correct.style.display = 'none'
+
+                 // create steal_incorrect button
+                 const steal_incorrect = document.createElement('p')
+                 steal_incorrect.innerHTML = 'INCORRECT'
+                 steal_incorrect.id = 'steal_incorrect'
+                 steal_incorrect.style.display = "none"
+
+                // add display correct's event listener
                 splash_correct.addEventListener('click', () => {
-                    // mark the question as used
-                    q_element.flip_used()
-                    remove_splash('splash')
                     // add points to the team
                     if (point_state === 1) {
                         team_points[team_names[1]] += q_element.getVal
                     } else {
                         team_points[team_names[0]] += q_element.getVal
                     }
-                    update_scores()
-                    determine_used()
-                });
-                splash.append(splash_correct)
-                
-                // if it's incorrect
-                const splash_incorrect = document.createElement('p')
-                splash_incorrect.innerHTML = 'incorrect'
-                splash_incorrect.id = 'splash_incorrect'
-                splash_incorrect.style.display = 'none'
-                splash_incorrect.addEventListener('click', () => {
-                    // mark the question as used
-                    q_element.flip_used()
-                    remove_splash('splash')
-                    // don't add points to team
-                    update_scores()  // TODO might need to take this out
-                    determine_used()
-                });
-                splash.append(splash_incorrect)
-                
-                // if it's steal
-                const splash_steal = document.createElement('p')
-                splash_steal.innerHTML = 'steal'
-                splash_steal.id = 'splash_steal'
-                // splash_steal.style.display = 'none'
-                splash_steal.addEventListener('click', () => {
-                    // mark the question as used
-                    q_element.flip_used()
-                    remove_splash('splash')
-                    // add points to opposite team
-                    if (point_state === 0) {
-                        team_points[team_names[0]] += q_element.getVal
-                    } else {
-                        team_points[team_names[1]] += q_element.getVal
-                    }
-                    update_scores()
-                    determine_used()
-                });
-                splash.append(splash_steal)
-                
-                console.log(team_points)
-                // display answer button
-                const splash_answer = document.createElement('p')
-                splash_answer.innerHTML = 'answer'
-                splash_answer.id = 'splash_answer'
-                splash_answer.addEventListener('click', () => {
+                    // update_scores()
+                    // replace p from question to answer
                     splash_p.innerHTML = q_element.getA
-                    splash_answer.style.display = 'none'
-                    splash_correct.style.display = 'block'
+                    
+                    // hide correct button
+                    splash_correct.style.display = "none"
+                    
+                    // hide incorrect button
+                    splash_steal.style.display = "none"
+                    
+                    // display next button
+                    const next_button = create_next_button()
+                    splash.append(next_button)
+
+                    // mark as used
+                    q_element.flip_used()
+                    determine_used()
                 });
-                splash.append(splash_answer)
+                
+            
+                // add splash steal event listener
+                splash_steal.addEventListener('click', () => {
+                    point_state = 1
+                    // hide the previous buttons
+                    splash_steal.style.display = 'none'
+                    splash_correct.style.display = 'none'
+                    // display steal_correct
+                    steal_correct.style.display = 'block'
+                    // display proper incorrect
+                    steal_incorrect.style.display = 'block'
+                })
+                
+
+                // steal_correct eventlistener
+                steal_correct.addEventListener('click', () => {
+                    // show answer
+                    splash_p.innerHTML = q_element.getA
+                    // create and show next button
+                    const next = create_next_button()
+                    splash.append(next)
+                    // hide correct and incorrect buttons
+                    steal_correct.style.display = "none"
+                    steal_incorrect.style.display = 'none'
+
+                    // award points
+
+                    // mark as used
+                    q_element.flip_used()
+                    determine_used()
+                })
+                
+                // steal_incorrect event listener
+                steal_incorrect.addEventListener('click', () => {
+                    // show answer
+                    splash.innerHTML = q_element.getA
+                    // award no points
+                    // show next button
+                    const next = create_next_button()
+                    splash.append(next)
+                    // hide steal_correct
+                    steal_correct.style.display = 'none'
+                    // hide steal_incorrect
+                    steal_incorrect.style.display = 'none'
+                    
+                    // mark as used
+                    q_element.flip_used()
+                    determine_used()
+                })
+
+
+                splash.append(splash_correct)
+                splash.append(splash_steal)
+                splash.append(steal_correct)
+                splash.append(steal_incorrect)
+
+
+            // // if it's incorrect by both teams needs to be created before steal
+            // const splash_incorrect = document.createElement('p')
+            // splash_incorrect.innerHTML = 'incorrect'
+            // splash_incorrect.id = 'splash_incorrect'
+            // splash_incorrect.style.display = 'none'
+            // splash_incorrect.addEventListener('click', () => {
+            //     // mark the question as used
+            //     q_element.flip_used()
+            //     remove_splash('splash')
+            //     // don't add points to team
+            //     update_scores()  // TODO might need to take this out
+            //     determine_used()
+            // });
+            // splash.append(splash_incorrect)
+
+
+
+                // if the team answering got it correct
+               
+                
+                
+                
+                
+
+                
+
+                
+                
+                // console.log(team_points)
+                // // display answer button
+                // const splash_answer = document.createElement('p')
+                // splash_answer.innerHTML = 'answer'
+                // splash_answer.id = 'splash_answer'
+                // splash_answer.addEventListener('click', () => {
+                //     splash_p.innerHTML = q_element.getA
+                //     splash_answer.style.display = 'none'
+                //     splash_correct.style.display = 'block'
+                // });
+                // splash.append(splash_answer)
 
                 // team selector
-                const team1 = document.createElement('p')
-                const team2 = document.createElement('p')
-                team1.innerHTML = team_names[0] // TODO change this so that it's not hardcoded
-                team2.innerHTML = team_names[1] // TODO change this so that it's not hardcoded
-                team1.addEventListener('click', () => {
-                    team1.style.border = '5px solid white'
-                    point_state = 0
-                })
-                team2.addEventListener('click', () => {
-                    point_state = 1
-                })
-                // team2.style.border = '5px solid white'
-                splash.append(team1)
-                splash.append(team2)
+                // const team1 = document.createElement('p')
+                // const team2 = document.createElement('p')
+                // team1.innerHTML = team_names[0] // TODO change this so that it's not hardcoded
+                // team2.innerHTML = team_names[1] // TODO change this so that it's not hardcoded
+                // team1.addEventListener('click', () => {
+                //     team1.style.border = '5px solid white'
+                //     point_state = 0
+                // })
+                // team2.addEventListener('click', () => {
+                //     point_state = 1
+                // })
+                // // team2.style.border = '5px solid white'
+                // splash.append(team1)
+                // splash.append(team2)
 
-                // display a back button
-                const splash_back = document.createElement('p')
-                splash_back.innerHTML = 'back'
-                splash_back.id = 'splash_back'
-                splash.append(splash_back)
-                splash_back.addEventListener('click', () => {
-                    remove_splash('splash')
-                })
+                // // display a back button
+                // const splash_back = document.createElement('p')
+                // splash_back.innerHTML = 'back'
+                // splash_back.id = 'splash_back'
+                // splash.append(splash_back)
+                // splash_back.addEventListener('click', () => {
+                //     remove_splash('splash')
+                // })
 
                 // add splash to the body
                 document.getElementsByTagName('body')[0].append(splash)
             });
             
-            col_div.append(x)
+            col_div.append(html_question)
             questions.push(q_element)
         }
         document.getElementById('cats').append(p)
@@ -263,6 +351,17 @@ function create_game() {
 }
 
 
+
+function create_next_button() {
+    // answer should display next button
+    const next = document.createElement('p')
+    next.innerHTML = 'next'
+    next.className = 'next'
+    next.addEventListener('click', () =>  {
+        remove_splash('splash')
+    })
+    return next
+}
 // setup splash screen
 function setup() {
     // setup container
@@ -316,7 +415,6 @@ function setup() {
         if (team_two_name.value !== "") {
             team_names.splice(1, 1, team_two_name.value)
         }
-        console.log(team_names)
         // figure out how to reset game
         init_scores()
         update_scores()
@@ -366,8 +464,8 @@ function update_scores() {
     let team_two_name = team_names[1]
     let one_h2 = document.getElementById('one')
     let two_h2 = document.getElementById('two')
-    one_h2.innerHTML = team_one_name + ":" + team_points[team_one_name]
-    two_h2.innerHTML = team_two_name + ":" + team_points[team_two_name]
+    one_h2.innerHTML = team_one_name + ": " + team_points[team_one_name]
+    two_h2.innerHTML = team_two_name + ": " + team_points[team_two_name]
 }
 
 function remove_splash(element_id)  {
@@ -389,7 +487,6 @@ function countdownTimer(seconds) {
             console.log(second)
         }
     }, 1000)
-    console.log('counting down')
 }
 
 function determine_used() {
@@ -398,11 +495,9 @@ function determine_used() {
             disable_used(questions[q].getId)
         }
     }
-    console.log(questions)
 }
 
 function disable_used(q_id) {
-    console.log(`${q_id}q`)
     const question = document.getElementById(q_id+'q')
     // blank the value and ensure it maintains it's form
     question.innerHTML = ''
