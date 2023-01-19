@@ -8,9 +8,11 @@ archaecally and awfully and it's not worth the time to refactor it.
 ## steps to use:
   1. create a python venv
   2. install requirements.txt using python3 -m pip install -r requirements.txt
+  3. place your csv file in jeopardy_app folder
 
 ## Technologies:
-- python3 flask
+- python3 django
+- vanilla js/html/css for now
   
 
 ## Data structure of a jeopardy game:
@@ -39,6 +41,7 @@ category, question1, answer1, question2, answer2, etc
 - create a "manual" mode where scoring and teams are turned off and the user manually keeps track on something external
 - show current value along with the answer when using manual mode
 - animations
+- redo front end in React.js
 
 note: forgive the missing functionality/features as this was hacked together
 in 24 hours in between school work and external commitments. 

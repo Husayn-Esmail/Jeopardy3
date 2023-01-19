@@ -1,5 +1,6 @@
 .DS_Store
 venv/
-*csv
+*.csv
 .env
 __pycache__
+*.numbers
