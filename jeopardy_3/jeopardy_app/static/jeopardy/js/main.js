@@ -266,77 +266,11 @@ function create_game() {
                     determine_used()
                 })
 
-
+                // add to splash
                 splash.append(splash_correct)
                 splash.append(splash_steal)
                 splash.append(steal_correct)
                 splash.append(steal_incorrect)
-
-
-            // // if it's incorrect by both teams needs to be created before steal
-            // const splash_incorrect = document.createElement('p')
-            // splash_incorrect.innerHTML = 'incorrect'
-            // splash_incorrect.id = 'splash_incorrect'
-            // splash_incorrect.style.display = 'none'
-            // splash_incorrect.addEventListener('click', () => {
-            //     // mark the question as used
-            //     q_element.flip_used()
-            //     remove_splash('splash')
-            //     // don't add points to team
-            //     update_scores()  // TODO might need to take this out
-            //     determine_used()
-            // });
-            // splash.append(splash_incorrect)
-
-
-
-                // if the team answering got it correct
-               
-                
-                
-                
-                
-
-                
-
-                
-                
-                // console.log(team_points)
-                // // display answer button
-                // const splash_answer = document.createElement('p')
-                // splash_answer.innerHTML = 'answer'
-                // splash_answer.id = 'splash_answer'
-                // splash_answer.addEventListener('click', () => {
-                //     splash_p.innerHTML = q_element.getA
-                //     splash_answer.style.display = 'none'
-                //     splash_correct.style.display = 'block'
-                // });
-                // splash.append(splash_answer)
-
-                // team selector
-                // const team1 = document.createElement('p')
-                // const team2 = document.createElement('p')
-                // team1.innerHTML = team_names[0] // TODO change this so that it's not hardcoded
-                // team2.innerHTML = team_names[1] // TODO change this so that it's not hardcoded
-                // team1.addEventListener('click', () => {
-                //     team1.style.border = '5px solid white'
-                //     point_state = 0
-                // })
-                // team2.addEventListener('click', () => {
-                //     point_state = 1
-                // })
-                // // team2.style.border = '5px solid white'
-                // splash.append(team1)
-                // splash.append(team2)
-
-                // // display a back button
-                // const splash_back = document.createElement('p')
-                // splash_back.innerHTML = 'back'
-                // splash_back.id = 'splash_back'
-                // splash.append(splash_back)
-                // splash_back.addEventListener('click', () => {
-                //     remove_splash('splash')
-                // })
 
                 // add splash to the body
                 document.getElementsByTagName('body')[0].append(splash)
@@ -443,6 +377,9 @@ function setup() {
 // TODO complete the jeopardy questions
 // TODO style the page to look much better
 // TODO use second to display the countdown
+// TODO ensure text shows up nicely
+// TODO space out buttons
+// TODO fix scoring system
 
 function create_scores() {
     let names_div = document.getElementById('team_names')

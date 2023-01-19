@@ -206,6 +206,7 @@ image {
     border-radius: 1rem;
     border: solid white 3px;
     padding: 1rem;
+    margin: 1rem;
 }
 
 #splash_correct:hover, #steal_correct:hover {
@@ -221,6 +222,7 @@ image {
     font-size: 2rem;
     border: solid white 3px;
     padding: 1rem;
+    margin: 1rem;
 }
 
 #splash_steal:hover, #steal_incorrect:hover {
