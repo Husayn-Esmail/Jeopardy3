@@ -161,8 +161,7 @@ image {
 
 #jeopImCont {
     display: flex;
-    /* justify-content: space-around; */
-    justify-content: center;
+    justify-content: space-around;
     padding: 1rem 0;
 }
 
