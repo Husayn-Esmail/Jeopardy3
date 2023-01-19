@@ -21,3 +21,24 @@ archaecally and awfully and it's not worth the time to refactor it.
 Thus in the csv you should have
 
 category, question1, answer1, question2, answer2, etc
+
+
+## Working features:
+- input questions and categories via .csv files
+- setup team names
+- showing questions, answers and returning back to the board
+
+## Broken features:
+- timer persists into the answer
+- scoring for teams
+
+## Future features:
+- replace "correct"/"incorect" with images
+- make the timer translate from just seconds to minutes:seconds
+- play and stop music when timer starts and stops
+- create a "manual" mode where scoring and teams are turned off and the user manually keeps track on something external
+- show current value along with the answer when using manual mode
+- animations
+
+note: forgive the missing functionality/features as this was hacked together
+in 24 hours in between school work and external commitments. 
