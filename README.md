@@ -1,8 +1,9 @@
 # Jeopardy 3
 
 ## Purpose:
-This project is my third iteration of jeopardy app. My original one was written
-archaecally and awfully and it's not worth the time to refactor it.
+This project is my third iteration of jeopardy app. My original one was 
+very, very, very bad. It would be more work to rewrite the old one than
+it is to write it from scratch.
 
 
 ## steps to use:
