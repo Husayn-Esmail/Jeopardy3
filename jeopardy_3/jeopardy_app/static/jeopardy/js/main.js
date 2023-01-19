@@ -437,8 +437,10 @@ function determine_used() {
 function disable_used(q_id) {
     const question = document.getElementById(q_id+'q')
     // blank the value and ensure it maintains it's form
-    question.innerHTML = ''
-    question.className = 'nohover'
+    // fill with invisible character
+    question.innerHTML = 'ㅤ'
+
+    question.classList.add('nohover')
     question.style.height = "100%"
     // create a clone and replace question with it's clone to remove event listener
     const clone = question.cloneNode(true)
