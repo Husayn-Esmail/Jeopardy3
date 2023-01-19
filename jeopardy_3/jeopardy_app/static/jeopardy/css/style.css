@@ -317,3 +317,12 @@ image {
     padding: 0.2rem;
 }
 
+/* timer */
+
+#timer {
+    font-size: 2rem;
+    color: white;
+    padding: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 3rem;
+}

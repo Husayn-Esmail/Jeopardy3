@@ -109,7 +109,7 @@ let questions = [];
 let point_state = 0;
 let team_points = {}
 let team_names = []
-let seconds_value = 0;
+let seconds_value = 120;
 
 function init_scores() {
     // not a pure function
@@ -160,6 +160,10 @@ function create_game() {
             html_question.addEventListener('click', function html_q_listener(){
                 const splash = document.createElement('div')
                 splash.id = 'splash'
+                // display the timer
+                const timer = createTimer()
+                countdownTimer(seconds_value, timer)
+                
 
                 // display the question
                 const splash_p = document.createElement('p')
@@ -269,6 +273,7 @@ function create_game() {
 
                 // add to splash
                 splash.append(splash_correct)
+                splash.append(timer)
                 // splash.append(splash_steal)
                 // splash.append(steal_correct)
                 // splash.append(steal_incorrect)
@@ -413,19 +418,28 @@ function remove_splash(element_id)  {
 }
 
 
-function countdownTimer(seconds) {
+function countdownTimer(seconds, element) {
     var start = Date.now();
     let int = setInterval(function() {
         var delta = Date.now() - start; // milliseconds elapsed since start
         const second = Math.floor(delta / 1000); // in seconds
+        element.innerHTML = seconds_value - second
         // alternatively just show wall clock time:
         const d = new Date().toUTCString()
         // stops the interval at a given time
         if (second === seconds) {
             clearInterval(int) 
             console.log(second)
+            element.innerHTML = "Time's Up!"
         }
+
     }, 1000)
+}
+
+function createTimer() {
+    const time_element = document.createElement('p')
+    time_element.id = "timer"
+    return time_element
 }
 
 function determine_used() {
