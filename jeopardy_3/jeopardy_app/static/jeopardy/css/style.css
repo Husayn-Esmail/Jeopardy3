@@ -161,7 +161,8 @@ image {
 
 #jeopImCont {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: center;
     padding: 1rem 0;
 }
 
@@ -208,6 +209,11 @@ image {
     border: solid white 3px;
     padding: 1rem;
     margin: 1rem;
+}
+
+/* remove me later */
+#splash_steal {
+    display: 'none';
 }
 
 #splash_correct:hover, #steal_correct:hover {
@@ -310,3 +316,4 @@ image {
     font-weight: bold;
     padding: 0.2rem;
 }
+

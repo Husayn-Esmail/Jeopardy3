@@ -169,7 +169,8 @@ function create_game() {
                 
                 // display correct
                 const splash_correct = document.createElement('p')
-                splash_correct.innerHTML = 'CORRECT'
+                // splash_correct.innerHTML = 'CORRECT'
+                splash_correct.innerHTML = 'ANSWER'
                 splash_correct.id = 'splash_correct'
 
                 // display incorrect (steal)
@@ -177,7 +178,7 @@ function create_game() {
                 splash_steal.innerHTML = 'STEAL'
                 splash_steal.id = 'splash_steal'
 
-                 // create button for steal_correct
+                //  create button for steal_correct
                  const steal_correct = document.createElement('p')
                  steal_correct.id = 'steal_correct'
                  steal_correct.innerHTML = 'CORRECT'
@@ -268,9 +269,9 @@ function create_game() {
 
                 // add to splash
                 splash.append(splash_correct)
-                splash.append(splash_steal)
-                splash.append(steal_correct)
-                splash.append(steal_incorrect)
+                // splash.append(splash_steal)
+                // splash.append(steal_correct)
+                // splash.append(steal_incorrect)
 
                 // add splash to the body
                 document.getElementsByTagName('body')[0].append(splash)
@@ -296,6 +297,7 @@ function create_next_button() {
     })
     return next
 }
+
 // setup splash screen
 function setup() {
     // setup container
@@ -381,29 +383,29 @@ function setup() {
 // TODO space out buttons
 // TODO fix scoring system
 
-function create_scores() {
-    let names_div = document.getElementById('team_names')
-    let team_one_name = team_names[0]
-    let team_two_name = team_names[1]
-    let one_h2 = document.createElement('h2')
-    let two_h2 = document.createElement('h2')
+// function create_scores() {
+//     let names_div = document.getElementById('team_names')
+//     let team_one_name = team_names[0]
+//     let team_two_name = team_names[1]
+//     let one_h2 = document.createElement('h2')
+//     let two_h2 = document.createElement('h2')
 
-    one_h2.innerHTML = team_one_name + ": " + team_points[team_one_name]
-    two_h2.innerHTML = team_two_name + ": " + team_points[team_two_name]
-    one_h2.id = 'one'
-    two_h2.id = 'two'
-    names_div.append(one_h2)
-    names_div.append(two_h2)
-}
+//     one_h2.innerHTML = team_one_name + ": " + team_points[team_one_name]
+//     two_h2.innerHTML = team_two_name + ": " + team_points[team_two_name]
+//     one_h2.id = 'one'
+//     two_h2.id = 'two'
+//     names_div.append(one_h2)
+//     names_div.append(two_h2)
+// }
 
-function update_scores() {
-    let team_one_name = team_names[0]
-    let team_two_name = team_names[1]
-    let one_h2 = document.getElementById('one')
-    let two_h2 = document.getElementById('two')
-    one_h2.innerHTML = team_one_name + ": " + team_points[team_one_name]
-    two_h2.innerHTML = team_two_name + ": " + team_points[team_two_name]
-}
+// function update_scores() {
+//     let team_one_name = team_names[0]
+//     let team_two_name = team_names[1]
+//     let one_h2 = document.getElementById('one')
+//     let two_h2 = document.getElementById('two')
+//     one_h2.innerHTML = team_one_name + ": " + team_points[team_one_name]
+//     two_h2.innerHTML = team_two_name + ": " + team_points[team_two_name]
+// }
 
 function remove_splash(element_id)  {
     const splash = document.getElementById(element_id)
@@ -447,23 +449,23 @@ function disable_used(q_id) {
     question.replaceWith(clone)
 }
 
-function create_setup_button() {
-// stupid way to make a button
-    const target = document.getElementById('jeopardyImage')
-    const setup_button = document.createElement('p');
-    setup_button.innerHTML = 'setup';
-    setup_button.id = 'setup_button';
-    setup_button.addEventListener('click', () => {
-        document.getElementsByTagName('body')[0].append(setup());
-    });
-    target.parentNode.insertBefore(setup_button, target)
-}
+// function create_setup_button() {
+// // stupid way to make a button
+//     const target = document.getElementById('jeopardyImage')
+//     const setup_button = document.createElement('p');
+//     setup_button.innerHTML = 'setup';
+//     setup_button.id = 'setup_button';
+//     setup_button.addEventListener('click', () => {
+//         document.getElementsByTagName('body')[0].append(setup());
+//     });
+//     target.parentNode.insertBefore(setup_button, target)
+// }
 
 
 create_game()
-create_setup_button();
-init_scores()
-create_scores()
+// create_setup_button();
+// init_scores()
+// create_scores()
 
 const categories = document.getElementsByClassName('category')
 categories[0].classList.add("top_left")
