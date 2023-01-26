@@ -192,7 +192,6 @@ function create_game() {
                  steal_incorrect.innerHTML = 'INCORRECT'
                  steal_incorrect.id = 'steal_incorrect'
                  steal_incorrect.style.display = "none"
-
                 // add display correct's event listener
                 splash_correct.addEventListener('click', () => {
                     // add points to the team
@@ -211,9 +210,14 @@ function create_game() {
                     // hide incorrect button
                     splash_steal.style.display = "none"
                     
+                    // remove the timer so that timer's consequences don't execute
+                    killTimer()
+                    timer.style.display = 'none' // hides the timer
+
                     // display next button
                     const next_button = create_next_button()
                     splash.append(next_button)
+
 
                     // mark as used
                     q_element.flip_used()
@@ -289,6 +293,19 @@ function create_game() {
     }
 }
 
+
+function killTimer() {
+    /*** 
+     * BE WARNED THIS KILLS ALL TIMERS
+     * https://stackoverflow.com/questions/3141064/how-to-stop-all-timeouts-and-intervals-using-javascript
+    ***/
+   // Set a fake timeout to get the highest timeout id
+   var highestTimeoutId = setTimeout(";");
+   console.log(highestTimeoutId)
+   for (var i = 0 ; i < highestTimeoutId ; i++) {
+       clearTimeout(i); 
+   }
+}
 
 
 function create_next_button() {
@@ -425,6 +442,7 @@ function countdownTimer(seconds, element) {
         element.innerHTML = seconds_value - second
         // alternatively just show wall clock time:
         const d = new Date().toUTCString()
+        console.log(second)
         // stops the interval at a given time
         if (second === seconds) {
             clearInterval(int) 
