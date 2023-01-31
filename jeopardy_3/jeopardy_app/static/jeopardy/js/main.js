@@ -249,6 +249,10 @@ function create_game() {
                     steal_correct.style.display = "none"
                     steal_incorrect.style.display = 'none'
 
+                    // stop and hide timer
+                    killTimer()
+                    timer.style.display = 'none' // hides the timer
+
                     // award points
 
                     // mark as used
