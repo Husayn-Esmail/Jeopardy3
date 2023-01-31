@@ -268,7 +268,10 @@ function create_game() {
                     steal_correct.style.display = 'none'
                     // hide steal_incorrect
                     steal_incorrect.style.display = 'none'
-                    
+                    // stop timer
+                    killTimer()
+                    timer.style.display = 'none' // hides the timer                    
+
                     // mark as used
                     q_element.flip_used()
                     determine_used()
