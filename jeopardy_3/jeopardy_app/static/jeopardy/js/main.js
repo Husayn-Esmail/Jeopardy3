@@ -259,7 +259,7 @@ function create_game() {
                 // steal_incorrect event listener
                 steal_incorrect.addEventListener('click', () => {
                     // show answer
-                    splash.innerHTML = q_element.getA
+                    splash_p.innerHTML = q_element.getA
                     // award no points
                     // show next button
                     const next = create_next_button()
