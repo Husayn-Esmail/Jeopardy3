@@ -32,7 +32,6 @@ category, question1, answer1, question2, answer2, etc
 - showing questions, answers and returning back to the board
 
 ## Broken features:
-- timer persists into the answer
 - scoring for teams
 
 ## Future features:
