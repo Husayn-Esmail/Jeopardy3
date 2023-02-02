@@ -6,7 +6,8 @@ def extract_data_from_csv(csv_filename):
     extracts the category (key) and question/answer pairs that should be sorted
     by difficulty (value)
 
-    returns a dicitonary
+    returns a dicitonary where the key is a category and the value is an array of
+    tuples (question, answer)
     """
     # init empty dictionary
     cats_and_qs = {}
