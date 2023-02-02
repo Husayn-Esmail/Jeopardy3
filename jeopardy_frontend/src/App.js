@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import axios from 'axios';
@@ -10,12 +9,12 @@ class App extends React.Component {
 
   componentDidMount() {
     let data;
-    axios.get('http://localhost:8000')
+    axios.get('http://localhost:8000/')
     .then(res=> {
       data = res.data;
-      console.log(data)
       this.setState({
-
+        // the fields that were serialized will appear here
+        // and will have to be set in the state section
       })
     })
     .catch(err => {})
