@@ -56,7 +56,6 @@ category, question1, answer1, question2, answer2, etc
 note: forgive the missing functionality/features as this was hacked together
 in 24 hours in between school work and external commitments.
 
-
 ## Resources
 
 I followed this video to integrate django with react
