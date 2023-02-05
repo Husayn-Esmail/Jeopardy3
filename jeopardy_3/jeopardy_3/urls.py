@@ -19,7 +19,7 @@ from .views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('react', index),
+    path('react/', index),
     # include jeopardy_app's urls file
     path('', include('jeopardy_app.urls'))
     # since the above is probably bad practice here's the actual one i'll use in production

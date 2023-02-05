@@ -17,6 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -62,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path,join(BASE_DIR, 'jeopardy_frontend/build')
+            os.path.join(BASE_DIR, 'jeopardy_frontend/build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,3 +131,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# react static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'jeopardy_frontend/build/static')
+]
