@@ -12,10 +12,16 @@ it is to write it from scratch.
   2. install requirements.txt using python3 -m pip install -r requirements.txt
   3. place your csv file in jeopardy_app folder
 
+## Paths
+
+react/
+/
+
 ## Technologies
 
 - python3 django
 - vanilla js/html/css for now
+- ReactJS
   
 ## Data structure of a jeopardy game
 
@@ -49,6 +55,7 @@ category, question1, answer1, question2, answer2, etc
 
 note: forgive the missing functionality/features as this was hacked together
 in 24 hours in between school work and external commitments.
+
 
 ## Resources
 
