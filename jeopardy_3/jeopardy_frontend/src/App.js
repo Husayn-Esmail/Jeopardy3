@@ -20,10 +20,6 @@ class App extends React.Component {
   }
 
   render() {
-    // if (this.state.data) {
-    //   return (<p>I'm true</p>)
-    // }
-    console.log(this.state.data)
     let color;
     if (this.state.color) {
       color = 'blue'
@@ -44,11 +40,48 @@ class App extends React.Component {
           }
         }}> don't press me</button> 
         <p>hello I'm a react app and I have {color}</p>
-        <JoepQ />
+        <GameBoard />
+        {/* <JoepQ question="hello?" answer="goodbye" value="100" question_id="1"/> */}
       </div>
     )
   }
 }
+
+class GameBoard extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      cats_and_qs:[]
+    };
+  }
+
+
+  componentDidMount() {
+    axios.get('http://localhost:8000/dat/')
+    .then(res=> {
+      // data = res.data;
+      this.setState({
+        cats_and_qs: res.data
+      })
+    })
+    .catch(err => {})
+  };
+
+  render() {
+    let cats = []
+    if (this.state.cats_and_qs !== []) {
+      for (let cat in this.state.cats_and_qs) {
+        cats.push(this.state.cats_and_qs[cat])
+      }
+    }
+   return ( 
+    <div>
+        <p>{cats}</p>
+    </div>
+   )
+  }
+}
+
 
 class JoepQ extends React.Component {
   constructor (props) {
@@ -61,14 +94,9 @@ class JoepQ extends React.Component {
   render() {
     return (
     <div>
-      <p>state: {this.state.used}</p>
       <button onClick={() => {
-        if (this.state.used === false) {
-          this.setState({ used: true })
-        } else {
-          this.setState({ used: false })
-        }
-      }}>flip</button>
+        this.setState({ used: true})
+      }} className="question_button">{ this.props.value }</button>
     </div>
     )
   }
