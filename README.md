@@ -62,3 +62,5 @@ I followed this video to integrate django with react
 <https://www.youtube.com/watch?v=w8SQ8beafiQ>
 React documentation
 <https://reactjs.org/docs/getting-started.html>
+returning json response
+<https://stackoverflow.com/questions/2428092/creating-a-json-response-using-django-and-python>
