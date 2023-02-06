@@ -4,7 +4,7 @@ from django.template import loader
 import os
 
 # my own modules
-from .read_questions import extract_data_from_csv
+from read_questions.read_questions import extract_data_from_csv
 # for passing data to js
 from json import dumps
 
