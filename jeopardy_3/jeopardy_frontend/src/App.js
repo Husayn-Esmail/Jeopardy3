@@ -8,16 +8,16 @@ class App extends React.Component {
     color: false
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:8000/dat/')
-    .then(res=> {
-      // data = res.data;
-      this.setState({
-        data: res.data
-      })
-    })
-    .catch(err => {})
-  }
+  // componentDidMount() {
+  //   axios.get('http://localhost:8000/dat/')
+  //   .then(res=> {
+  //     // data = res.data;
+  //     this.setState({
+  //       data: res.data
+  //     })
+  //   })
+  //   .catch(err => {})
+  // }
 
   render() {
     let color;
