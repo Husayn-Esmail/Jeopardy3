@@ -24,6 +24,6 @@ def index(request):
 
 def not_index(request):
     qandc = extract_data_from_csv("./ISA_Jeopardy_Questions.csv")
-    json_data = dumps(qandc)
-    context = {'q_and_c': json_data}
-    return JsonResponse(context)
+    # json_data = dumps(qandc)
+    # context = {'q_and_c': json_data}
+    return JsonResponse(qandc)

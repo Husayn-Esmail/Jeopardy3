@@ -58,8 +58,7 @@ class GameBoard extends React.Component {
 
   componentDidMount() {
     axios.get('http://localhost:8000/dat/')
-    .then(res=> {
-      // data = res.data;
+    .then(res => {
       this.setState({
         cats_and_qs: res.data
       })
@@ -68,17 +67,18 @@ class GameBoard extends React.Component {
   };
 
   render() {
-    let cats = []
-    if (this.state.cats_and_qs !== []) {
-      for (let cat in this.state.cats_and_qs) {
-        cats.push(this.state.cats_and_qs[cat])
-      }
+    console.log(this.state.cats_and_qs)
+    let cats = [];
+    // extract category names
+    for (let key in this.state.cats_and_qs) {
+      cats.push(key)
     }
-   return ( 
-    <div>
+
+    return ( 
+      <div>
         <p>{cats}</p>
-    </div>
-   )
+      </div>
+    )
   }
 }
 
