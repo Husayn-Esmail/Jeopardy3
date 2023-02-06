@@ -4,18 +4,16 @@ import axios from 'axios';
 
 class App extends React.Component {
   state = {
-
+    data: '',
+    color: false
   }
 
   componentDidMount() {
-    // let data = 0;
-    axios.get('http://localhost:8000/')
+    axios.get('http://localhost:8000/dat/')
     .then(res=> {
       // data = res.data;
       this.setState({
-        data: false
-        // the fields that were serialized will appear here
-        // and will have to be set in the state section
+        data: res.data
       })
     })
     .catch(err => {})
@@ -25,25 +23,26 @@ class App extends React.Component {
     // if (this.state.data) {
     //   return (<p>I'm true</p>)
     // }
+    console.log(this.state.data)
     let color;
-    if (this.state.data) {
+    if (this.state.color) {
       color = 'blue'
     } else {
       color = 'red'
     }
-
+    // let x = this.context
 
     return(
       <div style={{ backgroundColor: color }}>
         <button  onClick={() => {
-          if (this.state.data === false){
+          if (this.state.color === false){
             this.setState(
-              {data: true}
+              {color: true}
             )
           } else {
-            this.setState({data: false})
+            this.setState({color: false})
           }
-        }}> don't press me</button>
+        }}> don't press me</button> 
         <p>hello I'm a react app and I have {color}</p>
         <JoepQ />
       </div>
