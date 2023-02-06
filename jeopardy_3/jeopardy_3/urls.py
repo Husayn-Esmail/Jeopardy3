@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import index
+from .views import react
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('react/', index),
+    path('react/', react),
     # include jeopardy_app's urls file
     path('', include('jeopardy_app.urls'))
     # since the above is probably bad practice here's the actual one i'll use in production
