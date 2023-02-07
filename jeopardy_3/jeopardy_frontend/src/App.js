@@ -66,6 +66,23 @@ class GameBoard extends React.Component {
     .catch(err => {})
   };
 
+
+  // for mapping categories
+  /**
+   * maps through category names using the passed in array
+   * uses the category name as the key
+   * @param {*} arr 
+   * @returns array of category components 
+  */
+  makeCatBlocks = (arr) => {
+    return arr.map(value => (
+      <Category key={value} category_name={value}/>
+    ))
+  }
+
+
+
+
   render() {
     console.log(this.state.cats_and_qs)
     let cats = [];
@@ -73,10 +90,12 @@ class GameBoard extends React.Component {
     for (let key in this.state.cats_and_qs) {
       cats.push(key)
     }
+    let comps = this.makeCatBlocks(cats)
+
 
     return ( 
       <div>
-        <p>{cats}</p>
+        {comps}
       </div>
     )
   }
@@ -98,6 +117,16 @@ class JoepQ extends React.Component {
         this.setState({ used: true})
       }} className="question_button">{ this.props.value }</button>
     </div>
+    )
+  }
+}
+
+class Category extends React.Component {
+  render() {
+    return (
+      <div className='col'>
+          <p className='category'>{this.props.category_name}</p>
+      </div>
     )
   }
 }
