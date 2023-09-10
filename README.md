@@ -24,7 +24,8 @@ Jeopardy 3 (this name may be different for you)
 --jeopardy_frontend
 --read_questions
 ...
---example_format.csv
+--config.txt <-- this is where the csv filename will need to be entered
+--example_format.csv <-- this is where the csv will be read from
 
 ## Paths
 
