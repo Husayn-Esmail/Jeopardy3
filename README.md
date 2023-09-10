@@ -17,19 +17,19 @@ it is to write it from scratch.
 
 ### Folder Structure
 
-Jeopardy 3 (this name may be different for you)
-|
---jeopardy_3
---jeopardy_app
---jeopardy_frontend
---read_questions
-...
---config.txt <-- this is where the csv filename will need to be entered
+Jeopardy 3 (this name may be different for you)  
+|  
+--jeopardy_3  
+--jeopardy_app  
+--jeopardy_frontend  
+--read_questions  
+...  
+--config.txt <-- this is where the csv filename will need to be entered  
 --example_format.csv <-- this is where the csv will be read from
 
 ## Paths
 
-react/
+react/  
 /
 
 ## Technologies
@@ -44,8 +44,7 @@ react/
 2. you have questions that have answers (can be expressed in a tuple)
 3. you have point values associated with those question and answers.
 
-Thus in the csv you should have
-
+Thus in the csv you should have  
 category, question1, answer1, question2, answer2, etc
 
 ## Working features
@@ -68,14 +67,14 @@ category, question1, answer1, question2, answer2, etc
 - animations
 - redo front end in React.js
 
-note: forgive the missing functionality/features as this was hacked together
+note: forgive the missing functionality/features as this was hacked together  
 in 24 hours in between school work and external commitments.
 
 ## Resources
 
-I followed this video to integrate django with react
-<https://www.youtube.com/watch?v=w8SQ8beafiQ>
-React documentation
-<https://reactjs.org/docs/getting-started.html>
-returning json response
+I followed this video to integrate django with react  
+<https://www.youtube.com/watch?v=w8SQ8beafiQ>  
+React documentation  
+<https://reactjs.org/docs/getting-started.html>  
+returning json response  
 <https://stackoverflow.com/questions/2428092/creating-a-json-response-using-django-and-python>
