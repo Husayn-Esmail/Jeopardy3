@@ -6,11 +6,25 @@ This project is my third iteration of jeopardy app. My original one was
 very, very, very bad. It would be more work to rewrite the old one than
 it is to write it from scratch.
 
-## steps to use
+## Steps To Use
 
-  1. create a python venv
-  2. install requirements.txt using python3 -m pip install -r requirements.txt
-  3. place your csv file in jeopardy_app folder
+1. Clone the repository
+2. create a python venv
+3. install requirements.txt using python3 -m pip install -r requirements.txt
+4. if you don't already have a csv file in the format which is compatible with this program run the generate_example_csv.py file and populate with your data
+5. place your csv file at the root of the git folder (see example below)
+6. modify config.txt to be the name of your csv file which has the categories, questions, and answers
+
+### Folder Structure
+
+Jeopardy 3 (this name may be different for you)
+|
+--jeopardy_3
+--jeopardy_app
+--jeopardy_frontend
+--read_questions
+...
+--example_format.csv
 
 ## Paths
 
@@ -22,7 +36,7 @@ react/
 - python3 django
 - vanilla js/html/css for now
 - ReactJS
-  
+
 ## Data structure of a jeopardy game
 
 1. you have categories. (can be expressed in a dictionary where the category is the key and the value is a list of tuples that contain questions and answers)
