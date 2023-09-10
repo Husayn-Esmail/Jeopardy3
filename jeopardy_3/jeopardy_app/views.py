@@ -15,7 +15,10 @@ def index(request):
     # print(os.listdir('.'))
     # print(os.getcwd())
     template = loader.get_template("jeopardy/index.html")
-    catsnqs = extract_data_from_csv("./ISA_Jeopardy_Questions.csv")
+    filename = ""
+    with open("./config.txt", "r") as f:
+        filename = f.readline()
+    catsnqs = extract_data_from_csv(filename)
     # dump data
     json_data = dumps(catsnqs)
     context = {'data': json_data}
@@ -23,7 +26,10 @@ def index(request):
 
 
 def not_index(request):
-    qandc = extract_data_from_csv("./ISA_Jeopardy_Questions.csv")
+    filename = ""
+    with open("./config.txt", "r") as f:
+        filename = f.readline()
+    qandc = extract_data_from_csv(filename)
     # json_data = dumps(qandc)
     # context = {'q_and_c': json_data}
     return JsonResponse(qandc)
