@@ -19,7 +19,7 @@ __pycache__
 
 jeopardy_3/build
 jeopardy_3/dist
-jeopardy_3/cli.spec
+jeopardy_3/*.spec
 
 # misc
 .DS_Store
