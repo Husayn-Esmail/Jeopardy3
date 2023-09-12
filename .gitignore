@@ -17,6 +17,10 @@ __pycache__
 # production
 /build
 
+jeopardy_3/build
+jeopardy_3/dist
+jeopardy_3/cli.spec
+
 # misc
 .DS_Store
 .env.local
