@@ -78,3 +78,5 @@ React documentation
 <https://reactjs.org/docs/getting-started.html>  
 returning json response  
 <https://stackoverflow.com/questions/2428092/creating-a-json-response-using-django-and-python>
+follow this tutorial to package and ship the app... kind of, still some troubleshooting to do...  
+<https://realpython.com/pyinstaller-python>
