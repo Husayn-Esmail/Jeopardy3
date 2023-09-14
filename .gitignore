@@ -5,6 +5,7 @@ winvenv
 .env
 __pycache__
 *.numbers
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -21,6 +22,7 @@ __pycache__
 jeopardy_3/build
 jeopardy_3/dist
 jeopardy_3/*.spec
+jeopardy_3/config.txt
 
 # misc
 .DS_Store
