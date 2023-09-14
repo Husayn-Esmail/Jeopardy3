@@ -140,3 +140,14 @@ returning json response
 <https://stackoverflow.com/questions/2428092/creating-a-json-response-using-django-and-python>
 follow this tutorial to package and ship the app... kind of, still some troubleshooting to do...  
 <https://realpython.com/pyinstaller-python>
+
+## Troubleshooting
+
+This section exists for the following reason: python or python3?  
+Depending on how your python installation is configured, you may use python3 or python to invoke the  
+python shell. No matter what you use, ensure you're consistent and that you are using at least  
+python 3.8 or newer.
+
+With that being said, if you recieve errors when running the scripts in the "steps to use" section,  
+it's likely that you are setup with the "python" command and you simply need to modify each step to be  
+"python .." instead of "python3 ..." but that also means start.bat won't work for you.
