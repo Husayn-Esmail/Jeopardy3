@@ -12,7 +12,7 @@ def extract_data_from_csv(csv_filename):
     # init empty dictionary
     cats_and_qs = {}
 
-    with open(csv_filename, "r") as f:
+    with open(csv_filename, "r", encoding="utf-8") as f:
         csvFile = csv.reader(f)
         for line in csvFile:
             category = line[0]
