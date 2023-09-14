@@ -23,6 +23,11 @@ def generate_csv(fname):
         f.write(create_template_string())
     return 0
 
+def generate_config():
+    name = "config.txt"
+    with open (name, "w") as f:
+        f.write("example_format.csv")
+
 
 if __name__ == '__main__':
     filename = "example_format.csv"
