@@ -32,3 +32,4 @@ def generate_config():
 if __name__ == '__main__':
     filename = "example_format.csv"
     generate_csv(filename)
+    generate_config()
