@@ -54,34 +54,33 @@
       "publish": {
         "provider": "github",
         "owner": "Husayn-Esmail",
-        "repo": "electron-x-react",
-        "private": true,
-        "token": "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"
+        "repo": "Jeopardy3",
+        "private": false,
+        "token": ""
       }
     },
     "win": {
       "publish": {
         "provider": "github",
         "owner": "Husayn-Esmail",
-        "repo": "electron-x-react",
-        "private": true,
-        "token": "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"
+        "repo": "Jeopardy3",
+        "private": false,
+        "token": ""
       }
     },
     "linux": {
       "target": {
         "target": "default",
         "arch": [
-          "x64",
-          "arm64"
+          "x64"
         ]
       },
       "publish": {
         "provider": "github",
         "owner": "Husayn-Esmail",
-        "repo": "electron-x-react",
-        "private": true,
-        "token": "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"
+        "repo": "Jeopardy3",
+        "private": false,
+        "token": ""
       }
     },
     "files": [
