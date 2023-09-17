@@ -1,6 +1,9 @@
 {
   "name": "jeopardy_frontend",
   "version": "0.1.0",
+  "productName": "Jeopardy3",
+  "main": "public/electron.js",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -14,9 +17,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-electron": "export ELECTRON_START_URL=http://127.0.0.1:3000 && electron .",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "package": "electron-builder build --mac --win --linux -c.extraMetadata.main=build/electron.js --publish never",
+    "publish": "electron-builder build --mac --win --linux --publish always"
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +41,61 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "build": {
+    "mac": {
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64",
+          "arm64"
+        ]
+      },
+      "publish": {
+        "provider": "github",
+        "owner": "Husayn-Esmail",
+        "repo": "electron-x-react",
+        "private": true,
+        "token": "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"
+      }
+    },
+    "win": {
+      "publish": {
+        "provider": "github",
+        "owner": "Husayn-Esmail",
+        "repo": "electron-x-react",
+        "private": true,
+        "token": "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"
+      }
+    },
+    "linux": {
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64",
+          "arm64"
+        ]
+      },
+      "publish": {
+        "provider": "github",
+        "owner": "Husayn-Esmail",
+        "repo": "electron-x-react",
+        "private": true,
+        "token": "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"
+      }
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "private": true,
+      "owner": "Husayn-Esmail"
+    }
+  },
+  "devDependencies": {
+    "electron": "^26.2.1",
+    "electron-builder": "^24.6.4"
   }
 }
