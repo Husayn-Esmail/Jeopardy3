@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import axios from 'axios';
 import Question from './Components/QuestionBlock/QuestionBlock';
+import Board from './Components/Board/Board';
 class App extends React.Component {
   state = {
     data: '',
@@ -45,7 +46,8 @@ class App extends React.Component {
         <p>
           hello I'm a react app and I have the color <b>{color}</b>
         </p>
-        <div className="row">
+        <Board />
+        {/* <div className="row">
           <div className="col">
             <Question value="100" />
             <Question value="200" />
@@ -81,7 +83,7 @@ class App extends React.Component {
             <Question value="400" />
             <Question value="500" />
           </div>
-        </div>
+        </div> */}
         {/* <GameBoard /> */}
         {/* <JoepQ question="hello?" answer="goodbye" value="100" question_id="1"/> */}
       </div>
