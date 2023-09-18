@@ -1,6 +1,6 @@
 // import the fs module
 // const fs = require('fs').promises;
-const fs = require('fs');
+const fs = window.require('fs');
 const filename = '../../../2023-24_ISA_Jeopardy_Questions.csv';
 const { parse } = require('csv-parse');
 

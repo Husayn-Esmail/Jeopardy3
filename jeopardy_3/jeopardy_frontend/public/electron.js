@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const url = require('url');
+// const path = require('path');
+// const url = require('url');
+
 function createWindow() {
   const startUrl =
     process.env.ELECTRON_START_URL ||
@@ -14,6 +15,7 @@ function createWindow() {
     height: 800,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
   win.loadURL(startUrl);
