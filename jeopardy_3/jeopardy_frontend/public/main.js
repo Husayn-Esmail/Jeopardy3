@@ -1,8 +1,8 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('node:path');
 const url = require('url');
-
-// const path = require('path');
+const extract_data_from_csv = require('./read_questions/read_questions');
+filename = '../../2023-24_ISA_Jeopardy_Questions.csv';
 
 function createWindow() {
   const startUrl =
@@ -18,62 +18,47 @@ function createWindow() {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      // nodeIntegration: true,
-      // enableRemoteModule: true,
+      nodeIntegration: true,
     },
-    title: 'jeop3',
-    // frame: false, // hides the frame i.e. the ui to close, minimize, maximize
   });
+
+  const menu = Mneu.buildFromTemplate([
+    {
+      label: app.name,
+      submenu: [
+        {
+          click: () => win.webContents.send('read:csv', filename),
+          label: 'csv',
+        },
+      ],
+    },
+  ]);
+
+  Menu.setApplicationMenu(menu);
 
   win.loadURL(startUrl);
-  // win.removeMenu(); // helpful for removing menu in windows
-
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-      app.quit();
-    }
-  });
 }
 
-// function createWindow() {
-//   const startUrl =
-//     process.env.ELECTRON_START_URL ||
-//     URL.format({
-//       pathname: path.join(__dirname, 'index.html'),
-//       protocol: 'file:',
-//       slashes: true,
-//     });
-
-//   const win = new BrowserWindow({
-//     width: 800,
-//     height: 600,
-//     webPreferences: {
-//       nodeIntegration: true,
-//       contextIsolation: false,
-//       preload: __dirname + 'preload.js',
-//     },
-//   });
-
-//   win.loadURL(startUrl);
-
-//   app.on('window-all-closed', () => {
-//     if (process.platform !== 'darwin') {
-//       app.quit();
-//     }
-//   });
-// }
-
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong');
   createWindow;
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
 });
+
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  if (process.platform !== 'darwin') app.quit();
 });
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
+
+// create method to publish and subscribe to ipc
+ipcMain.handle('read:csv', async (_, args) => {
+  console.log('running cli', _, args);
+  let result;
+  if (args) {
+    const csv_data = extract_data_from_csv(args);
+
+    result = execSync(csv_data).toString();
   }
+  return result;
 });
