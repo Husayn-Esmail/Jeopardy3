@@ -2,7 +2,7 @@
   "name": "jeopardy_frontend",
   "version": "0.1.0",
   "productName": "Jeopardy3",
-  "main": "public/electron.js",
+  "main": "public/main.js",
   "homepage": "./",
   "private": true,
   "dependencies": {
@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "package": "electron-builder build --mac --win --linux -c.extraMetadata.main=build/electron.js --publish never",
+    "package": "electron-builder build --mac --win --linux -c.extraMetadata.main=build/main.js --publish never",
     "publish": "electron-builder build --mac --win --linux --publish always"
   },
   "eslintConfig": {
