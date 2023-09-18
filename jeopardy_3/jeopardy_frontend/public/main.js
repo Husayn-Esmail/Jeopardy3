@@ -63,7 +63,10 @@ function createWindow() {
 //   });
 // }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  ipcMain.handle('ping', () => 'pong');
+  createWindow;
+});
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
