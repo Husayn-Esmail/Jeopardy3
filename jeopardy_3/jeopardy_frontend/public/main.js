@@ -1,7 +1,9 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('node:path');
 const url = require('url');
-const extract_data_from_csv = require('./read_questions/read_questions');
+const extract_data_from_csv = require('../src/shared/read_questions/read_questions');
+import { channels } from '../src/shared/constants';
+
 filename = '../../2023-24_ISA_Jeopardy_Questions.csv';
 
 function createWindow() {
@@ -61,4 +63,22 @@ ipcMain.handle('read:csv', async (_, args) => {
     result = execSync(csv_data).toString();
   }
   return result;
+});
+
+const products = {
+  notebook: {
+    name: 'notebook',
+    price: '2500',
+    color: 'grey',
+  },
+  headphone: {
+    name: 'headphone',
+    price: '700',
+    color: 'black',
+  },
+};
+
+ipcMain.on(channels.GET_DATA, (event, arg) => {
+  const { product } = arg;
+  console.log(product);
 });
