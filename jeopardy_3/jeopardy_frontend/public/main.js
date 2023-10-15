@@ -2,9 +2,15 @@ const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('node:path');
 const url = require('url');
 const extract_data_from_csv = require('../src/shared/read_questions/read_questions');
-import { channels } from '../src/shared/constants';
+// import { channels } from '../src/shared/constants';
 
 filename = '../../2023-24_ISA_Jeopardy_Questions.csv';
+
+function handleSetTitle(event, title) {
+  const webContents = event.sender;
+  const second_win = BrowserWindow.fromWebContents(webContents);
+  second_win.setTitle(title);
+}
 
 function createWindow() {
   const startUrl =
@@ -20,11 +26,17 @@ function createWindow() {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true,
+      enableRemoteModule: true,
     },
   });
 
-  const menu = Mneu.buildFromTemplate([
+  ipcMain.on('set-title', (event, title) => {
+    const webContents = event.sender;
+    const second_win = BrowserWindow.fromWebContents(webContents);
+    second_win.setTitle(title);
+  });
+
+  const menu = Menu.buildFromTemplate([
     {
       label: app.name,
       submenu: [
@@ -37,12 +49,12 @@ function createWindow() {
   ]);
 
   Menu.setApplicationMenu(menu);
-
   win.loadURL(startUrl);
 }
 
 app.whenReady().then(() => {
-  createWindow;
+  ipcMain.on('set-title', handleSetTitle);
+  createWindow();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

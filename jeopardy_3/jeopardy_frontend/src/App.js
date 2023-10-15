@@ -2,6 +2,9 @@ import './App.css';
 import React from 'react';
 import axios from 'axios';
 import Question from './Components/QuestionBlock/QuestionBlock';
+import { channels } from './shared/constants';
+import Exp from './Components/Experimental/experiment';
+
 class App extends React.Component {
   state = {
     data: '',
@@ -28,6 +31,14 @@ class App extends React.Component {
     }
     // let x = this.context
 
+    // const getData = () => {
+    //   ipcRenderer.send(channels.GET_DATA, { product: 'notebook' });
+    // };
+    // const getData = () => {
+    //   electronAPI.getData({ setTitle });
+    // };
+    // const getData = electronAPI.setTitle();
+
     return (
       <div style={{ backgroundColor: color }}>
         <button
@@ -42,7 +53,13 @@ class App extends React.Component {
           {' '}
           don't press me
         </button>
-        <p>
+        {/* <button onClick={getData}>Get Data</button> */}
+        Title: <input id="title" />
+        <button id="btn" type="button">
+          Set
+        </button>
+        <Exp />
+        {/* <p>
           hello I'm a react app and I have the color <b>{color}</b>
         </p>
         <div className="row">
@@ -81,7 +98,7 @@ class App extends React.Component {
             <Question value="400" />
             <Question value="500" />
           </div>
-        </div>
+        </div> */}
         {/* <GameBoard /> */}
         {/* <JoepQ question="hello?" answer="goodbye" value="100" question_id="1"/> */}
       </div>
