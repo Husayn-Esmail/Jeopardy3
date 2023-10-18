@@ -1,8 +1,8 @@
 import './App.css';
 import React from 'react';
 import axios from 'axios';
-import Question from './Components/QuestionBlock/QuestionBlock';
-import { channels } from './shared/constants';
+// import Question from './Components/QuestionBlock/QuestionBlock';
+// import { channels } from './shared/constants';
 import Exp from './Components/Experimental/experiment';
 
 class App extends React.Component {
@@ -54,10 +54,10 @@ class App extends React.Component {
           don't press me
         </button>
         {/* <button onClick={getData}>Get Data</button> */}
-        Title: <input id="title" />
+        {/* Title: <input id="title" />
         <button id="btn" type="button">
           Set
-        </button>
+        </button> */}
         <Exp />
         {/* <p>
           hello I'm a react app and I have the color <b>{color}</b>

@@ -17,6 +17,7 @@
 // });
 
 const { contextBridge, ipcRenderer } = require('electron');
+console.log('Preloaded script'); // used for debugging
 
 contextBridge.exposeInMainWorld('electronAPI', {
   setTitle: (title) => {
