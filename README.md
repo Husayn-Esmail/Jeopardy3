@@ -10,11 +10,18 @@ anywhere although that may change in the future once I've revisited
 the frontend.
 
 
+![Main Screen](./images/main_screen "Main")
+
+![Setup Screen](./images/setup_screen "Setup")
+
+![Question Screen](./images/question_screen "Question")
+
+
 ## steps to use
 
   1. create a python venv
   2. install requirements.txt using python3 -m pip install -r requirements.txt
-  3. place your csv file in jeopardy_app folder
+  3. place your csv file in jeopardy\_app folder
 
 ## Technologies
 
