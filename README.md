@@ -2,12 +2,25 @@
 
 ## Purpose
 
-This project is my third iteration of jeopardy app. My original one was
+
+This project is my third iteration of jeopardy app. My original one was 
 very, very, very bad. It would be more work to rewrite the old one than
-it is to write it from scratch.
+it is to write it from scratch. Do note that this project was only meant
+to run locally on one's computer, I haven't designed it to be hosted
+anywhere although that may change in the future once I've revisited
+the frontend.
 
 **Note**: This project is still in active development so the server is a development server.
 No production server has been configured. Use at your own risk.
+
+
+
+![Main Screen](./images/main_screen.png "Main")
+
+![Setup Screen](./images/setup_screen.png "Setup")
+
+![Question Screen](./images/question_screen.png "Question")
+
 
 ## Prerequisites
 
@@ -76,21 +89,29 @@ To run this program you must have:
 
 Jeopardy3
 |  
---jeopardy_3  
+--jeopard\_3  
 &nbsp;&nbsp;&nbsp;&nbsp;|
-&nbsp;&nbsp;&nbsp;&nbsp;--example_format.csv (use this if you aren't using start.sh)
+&nbsp;&nbsp;&nbsp;&nbsp;--example\_format.csv (use this if you aren't using start.sh)
 &nbsp;&nbsp;&nbsp;&nbsp;--config.txt <-- this is where the csv filename will need to be entered (if not using start.sh)
---jeopardy_app  
---jeopardy_frontend  
---read_questions  
+--jeopardy\_app  
+--jeopardy\_frontend  
+--read\_questions  
 ...  
 --config.txt <-- this is where the csv filename will need to be entered (if using start.sh) you would need to move out of jeopardy_3
---example_format.csv <-- this is where the csv will be read from if you use start.sh - you would need to move out of jeopardy_3
+--example\_format.csv <-- this is where the csv will be read from if you use start.sh - you would need to move out of jeopardy_3
 
 ## Paths
 
 react/  
 /
+=======
+
+
+## steps to use
+
+  1. create a python venv
+  2. install requirements.txt using python3 -m pip install -r requirements.txt
+  3. place your csv file in jeopardy\_app folder
 
 ## Technologies
 
@@ -127,6 +148,7 @@ category, question1, answer1, question2, answer2, etc
 - animations
 - redo front end in React.js
 
+
 note: forgive the missing functionality/features as this was hacked together  
 in 24 hours in between school work and external commitments.
 
@@ -151,3 +173,7 @@ python 3.8 or newer.
 With that being said, if you recieve errors when running the scripts in the "steps to use" section,  
 it's likely that you are setup with the "python" command and you simply need to modify each step to be  
 "python .." instead of "python3 ..." but that also means start.bat won't work for you.
+
+note: forgive the missing functionality/features as this was hacked together
+in 24 hours in between school work and external commitments. 
+
