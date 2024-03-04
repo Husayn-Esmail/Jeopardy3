@@ -10,11 +10,11 @@ anywhere although that may change in the future once I've revisited
 the frontend.
 
 
-![Main Screen](./images/main_screen "Main")
+![Main Screen](./images/main_screen.png "Main")
 
-![Setup Screen](./images/setup_screen "Setup")
+![Setup Screen](./images/setup_screen.png "Setup")
 
-![Question Screen](./images/question_screen "Question")
+![Question Screen](./images/question_screen.png "Question")
 
 
 ## steps to use
